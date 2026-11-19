@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f6563">
+  <meta name="description" content="Вкусный Ташкент — авторские гастрономические маршруты по Чорсу, чайханам и центру плова. Исследуйте столицу Узбекистана через вкус, историю и традиции.">
+  <meta property="og:title" content="Вкусный Ташкент — город, который хочется попробовать">
+  <meta property="og:description" content="Шесть гастромаршрутов, интерактивная карта и вкусы настоящего Ташкента.">
+  <title>Вкусный Ташкент — фуд-туры по столице Узбекистана</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
+  <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
+  <script src="js/app.js?v=5" defer></script>
+  <script src="js/souvenir.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="topline"><span>Ўзбекистон • TOSHKENT</span><span>Город, который хочется попробовать</span><span>41°19′ N · 69°14′ E</span></div>
+  <header class="header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Вкусный Ташкент — наверх">
+        <span class="brand-symbol" aria-hidden="true">✳</span>
+        <span class="brand-title">Вкусный<span>Ташкент</span></span>
+      </a>
+      <nav id="navigation" class="nav" aria-label="Основная навигация">
+        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#map-section">Карта</a><a href="#flavors">Что попробовать</a><a href="#studio">Сувенирная</a>
+        <a href="#quiz" class="mobile-nav-cta">Подобрать тур <span aria-hidden="true">↗</span></a>
+      </nav>
+      <a class="nav-cta" href="#studio">Создать сувенир <span aria-hidden="true">↗</span></a>
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-texture"></div><div class="hero-motif hero-motif-left" aria-hidden="true">✳</div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> Гастрономический путеводитель по Ташкенту</div>
+          <h1 id="hero-title">Ташкент.<br><em>На вкус</em><span class="headline-dot">.</span></h1>
+          <p class="hero-lead">За ароматом самсы — на Чорсу. За пловом — к огромным казанам. За впечатлениями — в город, где за столом всегда найдётся место для гостя.</p>
+          <div class="hero-actions"><a href="#tours" class="button button-sun">Исследовать маршруты <span aria-hidden="true">↗</span></a><a href="#map-section" class="text-link light-link"><span class="round-arrow" aria-hidden="true">↗</span> Карта и навигация</a></div>
+          <div class="hero-bottom"><div class="hero-small-stamp">TASTE<br>THE<br>CITY <span>✳</span></div><div><strong>6 маршрутов</strong><br><span>и бесконечно много вкусов</span></div></div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-arch">
+            <div class="hero-arch-grid"></div>
+            <div class="hero-photo-frame art-bg-plov">
+              <img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация узбекского плова" fetchpriority="high" width="506" height="506">
+            </div>
+            <div class="hero-overlay"></div>
+          </div>
+          <div class="hero-sticker" aria-label="100% атмосферно"><div>100%</div><span>АТМОСФЕРНО</span><b>✺</b></div>
+          <div class="hero-photo-caption"><span class="caption-dot"></span> ПЛОВ · САМСА · ЧАЙ · ТАШКЕНТ</div>
+          <div class="hero-food-note">osh <span>—</span> это любовь</div>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator"><span>ЛИСТАЙ И ПРОБУЙ</span><span class="scroll-line"></span></div>
+    </section>
+
+    <div class="marquee" aria-label="Плов, самса, лепёшки, чай, сладости"><div class="marquee-track" aria-hidden="true"><span>OSH <i>✳</i> SOMSA <i>✳</i> NON <i>✳</i> CHOY <i>✳</i> TOSHKENT <i>✳</i></span><span>OSH <i>✳</i> SOMSA <i>✳</i> NON <i>✳</i> CHOY <i>✳</i> TOSHKENT <i>✳</i></span></div></div>
+
+    <section id="about" class="section about-section">
+      <div class="container about-grid">
+        <div class="about-visual reveal"><div class="about-card-pattern"></div><div class="about-food art-bg-non"><img loading="lazy" src="assets/photos/chorsu.webp" alt="Иллюстрация восточного базара со специями и сухофруктами" width="506" height="506"></div><div class="about-seal">ТАШКЕНТ<br><span>С ЛЮБОВЬЮ</span><b>✿</b></div><div class="about-postmark">ЭСКИ ШАХАР<br><small>OLD TOWN · 2026</small></div></div>
+        <div class="about-copy reveal"><div class="eyebrow">01 / ВКУС ГОРОДА</div><h2 class="section-heading">Сначала<br>попробуй.<br><em>Потом влюбись.</em></h2><p class="body-large">Здесь история живёт не только в музеях. Она в лепёшке из тандыра, в шуме базара, в пиале горячего чая и в рецептах, которые передают из поколения в поколение.</p><p>Мы придумали шесть самостоятельных гастропрогулок: с настоящими городскими точками, понятным маршрутом и маленькими открытиями на каждом шагу.</p><div class="about-facts"><div><strong>06</strong><span>вкусовых историй</span></div><div><strong>01</strong><span>город с характером</span></div><div><strong>∞</strong><span>поводов вернуться</span></div></div></div>
+      </div>
+    </section>
+
+    <section id="tours" class="section tours-section">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">02 / ВЫБИРАЙ СВОЙ ВКУС</div><h2 class="section-heading">Какой Ташкент<br><em>твой сегодня?</em></h2></div><p>У каждого маршрута свой характер. Выбирай по настроению, времени или любимому блюду.</p></div>
+        <div id="tour-filters" class="filters" role="group" aria-label="Фильтр маршрутов"><button class="filter is-active" data-filter="all" aria-pressed="true">Все маршруты <span>06</span></button><button class="filter" data-filter="classic" aria-pressed="false">Традиции</button><button class="filter" data-filter="street" aria-pressed="false">Стритфуд</button><button class="filter" data-filter="sweet" aria-pressed="false">Сладости</button><button class="filter" data-filter="evening" aria-pressed="false">Вечер</button></div>
+        <div id="tour-grid" class="tour-grid" aria-live="polite"></div>
+        <p class="small-note"><span aria-hidden="true">✳</span> Это авторские идеи самостоятельных прогулок, а не коммерческие экскурсии. Время примерное; расходы на еду и проезд не включены.</p>
+      </div>
+    </section>
+
+    <section class="quote-band"><div class="container quote-content"><span class="quote-spark">✳</span><p>«В Узбекистане знакомство<br>начинается с <em>чашки чая.</em>»</p><span class="quote-uz">MEHMON — AZIZ<br><small>ГОСТЬ — ДОРОГ</small></span></div></section>
+
+    <section id="map-section" class="section map-section">
+      <div class="container"><div class="section-head reveal"><div><div class="eyebrow">03 / КАРТА ВКУСОВ</div><h2 class="section-heading">Город на<br><em>ладони.</em></h2></div><p>Настоящая карта города: точки маршрута, обычный и спутниковый слой, а также быстрый переход к навигации. Остановки можно выбирать прямо на карте.</p></div>
+        <div class="map-layout reveal">
+          <div class="map-side"><div class="map-side-top"><span class="side-issue">01 — 06 / МАРШРУТЫ</span><h3>Выбери прогулку</h3><label class="visually-hidden" for="map-route-select">Маршрут на карте</label><select id="map-route-select" aria-label="Маршрут на карте"></select></div><div id="map-steps" class="map-steps" aria-live="polite"></div><div class="map-side-bottom"><p>Для длинных маршрутов планируй поездки на метро или такси. Маршрут на карте справочный — для навигации открой Google Карты.</p><button id="download-route" class="button button-dark" type="button">Скачать PDF <span aria-hidden="true">↓</span></button></div></div>
+          <div class="map-wrap">
+            <div id="real-map" role="application" aria-label="Интерактивная карта Ташкента с маршрутами и точками"></div>
+            <div class="map-top-overlay"><span class="map-live-dot"></span><span>ТАШКЕНТ · ЖИВАЯ КАРТА</span><span class="map-top-right">OPENSTREETMAP</span></div>
+            <div class="map-tools" role="group" aria-label="Управление картой"><button type="button" class="map-tool is-active" id="map-streets" aria-pressed="true">Улицы</button><button type="button" class="map-tool" id="map-satellite" aria-pressed="false">Спутник</button><button type="button" class="map-tool map-tool-icon" id="map-fit" aria-label="Показать все остановки" title="Показать все точки">⤢</button></div>
+            <div id="map-notice" class="map-notice" role="status" aria-live="polite">Загрузка карты…</div>
+            <div class="map-legend"><span><i class="legend-mark"></i> Точки тура</span><span><i class="legend-line"></i> <span id="route-kind">Последовательность остановок</span></span><a id="map-navigate" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Навигация ↗</a></div>
+          </div>
+        </div>
+        <div id="map-point-detail" class="map-point-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="flavors" class="section flavor-section"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">04 / ВКУСНАЯ АЗБУКА</div><h2 class="section-heading">Главные герои<br><em>нашей истории.</em></h2></div><p>Начни с классики, но оставь место для неожиданного. Нажми на блюдо, чтобы узнать больше.</p></div><div class="dish-grid" id="dish-grid"></div></div></section>
+
+    <section class="section studio-section" id="studio" aria-labelledby="studio-heading">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">05 / МАСТЕРСКАЯ ВПЕЧАТЛЕНИЙ</div><h2 class="section-heading" id="studio-heading">Свой маленький<br><em>кусочек Ташкента.</em></h2></div><p>Сделай персональный цифровой сувенир: выбери стиль, добавь подпись, отметь любимые вкусы и скачай открытку в PNG.</p></div>
+        <div class="studio-layout reveal">
+          <div class="studio-editor">
+            <div class="studio-editor-top"><span class="studio-index">TOSHKENT • SOUVENIR LAB</span><span class="studio-flower" aria-hidden="true">✹</span></div>
+            <div class="studio-group"><label class="studio-label" for="souvenir-name">01 / Твоя надпись</label><input id="souvenir-name" type="text" maxlength="26" value="Мой вкусный Ташкент" autocomplete="off" placeholder="Например, Привет из Ташкента"><span class="studio-field-hint">Можно написать своё имя или короткое пожелание</span></div>
+            <div class="studio-group"><span class="studio-label">02 / Выбери формат</span><div class="studio-templates" role="group" aria-label="Формат сувенира"><button type="button" class="studio-template is-active" data-template="postcard" aria-pressed="true"><span>✉</span> Открытка</button><button type="button" class="studio-template" data-template="passport" aria-pressed="false"><span>✳</span> Гастропаспорт</button><button type="button" class="studio-template" data-template="ticket" aria-pressed="false"><span>◈</span> Билет на вкус</button></div></div>
+            <div class="studio-group"><span class="studio-label">03 / Цвет настроения</span><div class="studio-swatches" role="group" aria-label="Цветовая палитра"><button type="button" class="studio-swatch is-active" data-palette="turquoise" aria-pressed="true" style="--swatch:#0f7071" aria-label="Бирюзовый" title="Бирюзовый"></button><button type="button" class="studio-swatch" data-palette="pomegranate" aria-pressed="false" style="--swatch:#b24c4a" aria-label="Гранатовый" title="Гранатовый"></button><button type="button" class="studio-swatch" data-palette="saffron" aria-pressed="false" style="--swatch:#dc8f32" aria-label="Шафрановый" title="Шафрановый"></button><button type="button" class="studio-swatch" data-palette="indigo" aria-pressed="false" style="--swatch:#344f93" aria-label="Кобальтовый" title="Кобальтовый"></button></div></div>
+            <div class="studio-group studio-passport"><div class="passport-header"><span class="studio-label">04 / Мой паспорт вкусов</span><span id="passport-count" class="passport-count">0 из 5</span></div><p>Отметь, что уже попробовал. Достижения появятся на твоём сувенире.</p><div class="passport-list"><label><input type="checkbox" data-taste="plov"><span>🍚</span> Плов</label><label><input type="checkbox" data-taste="samsa"><span>🥟</span> Самса</label><label><input type="checkbox" data-taste="non"><span>🫓</span> Нон</label><label><input type="checkbox" data-taste="tea"><span>🍵</span> Чай</label><label><input type="checkbox" data-taste="sweets"><span>🍬</span> Сладости</label></div></div>
+            <div class="studio-actions"><button class="button button-dark" id="souvenir-download" type="button">Скачать PNG <span aria-hidden="true">↓</span></button><button class="studio-random" id="souvenir-remix" type="button">↻ Удиви меня</button></div><div class="studio-privacy"><span aria-hidden="true">✳</span> Сувенир создаётся прямо в браузере. Твоё имя никуда не отправляется.</div>
+          </div>
+          <div class="studio-preview"><div class="studio-preview-top"><span class="preview-status"><i></i> ПРЕДПРОСМОТР · ОБНОВЛЯЕТСЯ СРАЗУ</span><span>ИЗ ТАШКЕНТА С ЛЮБОВЬЮ</span></div><div class="souvenir-paper"><canvas id="souvenir-canvas" width="1200" height="840" role="img" aria-label="Предпросмотр персонального сувенира с узбекским орнаментом"></canvas></div><div class="studio-preview-bottom"><div><strong>Готово для твоей коллекции</strong><span>PNG · 1200 × 840 px · можно сохранить или отправить друзьям</span></div><button type="button" id="souvenir-share" class="souvenir-share">Поделиться ↗</button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section" aria-label="Атмосфера путешествия"><div class="experience-illustration"><span class="sun-disc"></span><span class="city-arc arc-one"></span><span class="city-arc arc-two"></span><span class="city-dome dome-one"></span><span class="city-dome dome-two"></span><span class="city-dome dome-three"></span></div><div class="container experience-inner"><span class="eyebrow">НЕ ПРОСТО ЕДА</span><h2>Попробуй город.<br><em>Запомни момент.</em></h2><p>Тёплый хлеб прямо из печи. Гул старого рынка. Звон пиал. Иногда лучший сувенир — это история, которую ты увезёшь с собой.</p><a href="#quiz" class="button button-sun">Найти мой маршрут <span aria-hidden="true">↗</span></a></div><span class="exp-bottom-text">ТАШКЕНТ · ВПЕЧАТЛЕНИЯ · ГАСТРОНОМИЯ</span></section>
+
+    <section id="quiz" class="section quiz-section"><div class="container quiz-layout"><div class="quiz-intro reveal"><div class="eyebrow">06 / МАЛЕНЬКИЙ ТЕСТ</div><h2 class="section-heading">Какой у тебя<br><em>вкус к жизни?</em></h2><p>Три быстрых вопроса — и мы подскажем гастромаршрут по настроению. Никаких регистраций, только аппетит.</p><div class="quiz-doodle" aria-hidden="true"><span>?</span><span>✿</span><span>✳</span></div></div><div class="quiz-card reveal"><div id="quiz-content" aria-live="polite"></div></div></div></section>
+
+    <section class="closing-section"><div class="closing-texture"></div><div class="container closing-grid"><div><div class="eyebrow">YAXSHI ISHTAHA!</div><h2>Ну что,<br><em>поедим?</em></h2><p>Каждый большой маршрут начинается с одного маленького «попробую».</p><a href="#tours" class="button button-cream">Выбрать приключение <span aria-hidden="true">↗</span></a></div><div class="closing-plate" aria-hidden="true"><img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация плова"></div></div></section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#map-section">Карта</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="tour-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+  <dialog id="dish-dialog" class="dish-dialog" aria-labelledby="dish-dialog-title"><div id="dish-dialog-content"></div></dialog>
+  <button class="back-to-top" type="button" id="to-top" aria-label="Вернуться наверх">↑</button>
+</body>
+</html>
