@@ -3,6 +3,7 @@
 (() => {
 const canvas=document.querySelector('#souvenir-canvas'); if(!canvas)return;
 const ctx=canvas.getContext('2d');
+const plovPhoto=new Image();plovPhoto.src='assets/photos/plov.webp';plovPhoto.addEventListener('load',()=>render());
 const palettes={
  turquoise:{base:'#116965',deep:'#104945',pale:'#d9efdc',sun:'#f6c267',rose:'#dc7850'},
  pomegranate:{base:'#a7474d',deep:'#702e40',pale:'#f8dfcd',sun:'#f2bc64',rose:'#e77e6c'},
@@ -49,7 +50,12 @@ function drawPostcard(p){
  ctx.fillStyle=p.deep;writeFit(userName(),85,305,1030,73,'700');
  ctx.fillStyle=p.rose;ctx.font='600 26px Manrope, sans-serif';ctx.fillText('Город, который хочется попробовать',88,351);
  ctx.save();ctx.fillStyle=p.sun+'50';ctx.beginPath();ctx.arc(971,530,185,0,Math.PI*2);ctx.fill();ctx.restore();
- arcWindow(90,390,595,300,p);citySilhouette(119,510,550,p);drawPlate(932,554,160,p);
+ arcWindow(90,390,595,300,p);citySilhouette(119,510,550,p);// Фотореалистичный плов вместо нарисованной имитации — локальное изображение, безопасно для Canvas.
+ ctx.save();ctx.shadowColor='#16443f44';ctx.shadowBlur=24;ctx.fillStyle='#fff8e9';ctx.beginPath();ctx.ellipse(928,554,190,156,0,0,Math.PI*2);ctx.fill();ctx.restore();
+ ctx.save();ctx.beginPath();ctx.ellipse(928,554,172,138,0,0,Math.PI*2);ctx.clip();
+ if(plovPhoto.complete&&plovPhoto.naturalWidth){const w=plovPhoto.naturalWidth,h=plovPhoto.naturalHeight,scale=Math.max(344/w,276/h);ctx.drawImage(plovPhoto,928-w*scale/2,554-h*scale/2,w*scale,h*scale)}else drawPlate(928,554,142,p);
+ ctx.restore();ctx.strokeStyle=p.base;ctx.lineWidth=12;ctx.beginPath();ctx.ellipse(928,554,176,143,0,0,Math.PI*2);ctx.stroke();
+ ctx.strokeStyle=p.sun;ctx.lineWidth=5;ctx.beginPath();ctx.ellipse(928,554,188,155,0,0,Math.PI*2);ctx.stroke();
  ctx.fillStyle=p.deep;ctx.font='800 24px Manrope, sans-serif';ctx.fillText('С ЛЮБОВЬЮ ИЗ УЗБЕКИСТАНА',90,748);
  ctx.fillStyle=p.rose;ctx.font='700 21px Manrope, sans-serif';ctx.fillText('✳  ПЛОВ   ✳   САМСА   ✳   ЧАЙ',720,750);
 }
