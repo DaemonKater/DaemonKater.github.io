@@ -14,14 +14,15 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/v7.css">
-  <link rel="stylesheet" href="css/cinema-v8.css">
+  <link rel="stylesheet" href="css/immersive-v9.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
   <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
   <script src="js/app.js?v=5" defer></script>
   <script src="js/souvenir.js" defer></script>
   <script src="js/explorer.js" defer></script>
-  <script src="js/cinema-v8.js" defer></script>
+  <script src="js/immersive-v9.js" defer></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -33,7 +34,7 @@
         <span class="brand-title">Вкусный<span>Ташкент</span></span>
       </a>
       <nav id="navigation" class="nav" aria-label="Основная навигация">
-        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#immersive">Живой Ташкент ✦</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
+        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#immersive">Ташкент 360° ✦</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
         <a href="#quiz" class="mobile-nav-cta">Подобрать тур <span aria-hidden="true">↗</span></a>
       </nav>
       <a class="nav-cta" href="#studio">Создать сувенир <span aria-hidden="true">↗</span></a>
@@ -105,28 +106,39 @@
 
 
 
-<section id="immersive" class="cinema-section" aria-labelledby="immersive-heading">
-  <div class="cinema-section-glow" aria-hidden="true"></div>
-  <div class="container cinema-intro">
-    <div class="cinema-kicker"><span class="cinema-signal"></span> THE SPIRIT OF TASHKENT <span class="cinema-sep">/</span> ИНТЕРАКТИВНОЕ ПУТЕШЕСТВИЕ</div>
-    <h2 id="immersive-heading">Не смотри на Ташкент.<br><em>Окажись внутри.</em></h2>
-    <p>Город можно увидеть на карте. А можно почувствовать: заглянуть под купол Чорсу, оказаться у огромного казана и пройти сквозь огни вечерней столицы.</p>
+<section id="immersive" class="immersive-nine" aria-labelledby="imm9-heading">
+  <div class="imm9-header container">
+    <div class="imm9-eyebrow"><span class="imm9-blink"></span> TASHKENT / BEYOND THE SCREEN <span>·</span> НАСТОЯЩЕЕ ПОГРУЖЕНИЕ</div>
+    <h2 id="imm9-heading">Ташкент больше <em>не картинка.</em><br><span>Он движется. Ты внутри.</span></h2>
+    <p>Смотри видео, вращай реальную панораму Ташкента на 360° и поставь цифровую пиалу на стол через камеру телефона. Это три разных способа почувствовать город.</p>
   </div>
-  <div class="cinema-banner" id="cinema-banner">
-    <div class="cinema-banner-image" aria-hidden="true"></div><div class="cinema-banner-shadow" aria-hidden="true"></div>
-    <div class="cinema-stars" aria-hidden="true"></div>
-    <div class="cinema-banner-border" aria-hidden="true"><span>✺</span><span>✺</span><span>✺</span></div>
-    <div class="cinema-banner-content">
-      <div class="cinema-chapter-caption">✦ ГЛАВА ПЕРВАЯ / ГОРОД ПРОБУЖДАЕТСЯ</div>
-      <div class="cinema-banner-head">ТАШКЕНТ<span>LIVE</span></div>
-      <p>Пять эпизодов. Одна история. Город, которым можно управлять.</p>
-      <button type="button" class="cinema-primary cinema-enter" id="v7-experience-open"><span class="cinema-play-icon">▶</span><span>ВОЙТИ В ИСТОРИЮ<small>полный экран · интерактивные сцены</small></span><span class="cinema-cta-arrow">↗</span></button>
-      <div class="cinema-banner-hint">✥ ДВИГАЙ КУРСОР ИЛИ ПАЛЕЦ · ИССЛЕДУЙ ЛОКАЦИИ</div>
+  <div class="imm9-cinema">
+    <video id="imm9-hero-video" class="imm9-film" autoplay muted loop playsinline preload="metadata" poster="assets/places/epic_tashkent.webp" aria-label="Кинематографическая видеозаставка о Ташкенте">
+      <source src="assets/video/tashkent-cinematic.mp4" type="video/mp4">
+    </video>
+    <div class="imm9-cinema-shade"></div><div class="imm9-scanline"></div>
+    <div class="container imm9-cinema-inner">
+      <div class="imm9-label-top"><span><i class="imm9-live"></i> TASTE TASHKENT • MOTION REEL</span><span>01 / 03</span></div>
+      <div class="imm9-film-head"><span class="imm9-pretitle">Город, который не стоит на месте</span><h3>ПОЧУВСТВУЙ<br><em>РИТМ ТАШКЕНТА.</em></h3><p>Не просто листай страницу — погружайся в движения, свет и звуки восточного города.</p><div class="imm9-film-actions"><button type="button" id="imm9-open-video" class="imm9-gold-btn"><span class="imm9-play">▶</span> СМОТРЕТЬ РЕАЛЬНЫЕ КАДРЫ <span>↗</span></button><button id="imm9-hero-sound" type="button" class="imm9-ghost-btn" title="Переключить звук видеозаставки" aria-pressed="false">◌ Звук базара (синтез)</button></div><small>Фон — художественный видеомонтаж; отдельная кнопка открывает документальную съёмку узбекского базара.</small></div>
+      <div class="imm9-timeline"><span class="imm9-timeline-bar"><span></span></span><span>ПЛОВ</span><span>ЧОРСУ</span><span>ВЕЧЕРНИЙ ГОРОД</span></div>
     </div>
-    <div class="cinema-banner-right"><div class="cinema-artifact">✳<span>41°19′ N<br>69°14′ E</span></div><div class="cinema-gate"><div class="cinema-gate-inner">✶<small>ВОЙТИ<br>В ГОРОД</small></div></div><span class="cinema-orbit-label">YURAKDAN · FROM THE HEART</span></div>
-    <div class="cinema-banner-bottom"><div class="cinema-showline"><span><b>01</b> БАЗАР</span><i></i><span><b>02</b> ПЛОВ</span><i></i><span><b>03</b> УЗОРЫ</span><i></i><span><b>04</b> ОГНИ</span></div><button id="v7-experience-preview" type="button" class="cinema-explore-quick">ЗАГЛЯНУТЬ В ПОРТАЛ ↗</button></div>
   </div>
-  <div class="container cinema-bottom-caption"><span>✶ 5 КИНЕМАТОГРАФИЧНЫХ ГЛАВ</span><span>✶ ЖИВЫЕ ТОЧКИ И ПОДСКАЗКИ</span><span>✶ СУМЕРКИ / НОЧЬ</span><span>✶ ДОБАВЛЯЙ МЕСТА В МАРШРУТ</span></div>
+  <div class="container imm9-explore-head"><div><span class="imm9-asterisk">✳</span><span>ТРИ СПОСОБА ПОПАСТЬ В ТАШКЕНТ</span></div><p>Нажимай на каждую карточку — это рабочие интерактивные режимы.</p></div>
+  <div class="container imm9-experiences">
+    <button type="button" id="imm9-open-vr" class="imm9-tile imm9-vr-tile">
+      <span class="imm9-tile-cover" style="background-image:url('assets/places/epic_tashkent.webp')"></span><span class="imm9-tile-shade"></span>
+      <span class="imm9-tile-upper"><span class="imm9-tile-num">EXPERIENCE 02</span><span class="imm9-tile-tag">НАСТОЯЩАЯ ПАНОРАМА</span></span>
+      <span class="imm9-tile-symbol imm9-rotate">360°</span>
+      <span class="imm9-tile-bottom"><strong>Ташкент со всех сторон.</strong><small>Вращай обзор · Гироскоп · Режим VR-очков</small><span class="imm9-tile-link">ВОЙТИ В ПАНОРАМУ ↗</span></span>
+    </button>
+    <button type="button" id="imm9-open-ar" class="imm9-tile imm9-ar-tile">
+      <span class="imm9-tile-cover" style="background-image:url('assets/photos/sweets.webp')"></span><span class="imm9-tile-shade"></span>
+      <span class="imm9-tile-upper"><span class="imm9-tile-num">EXPERIENCE 03</span><span class="imm9-tile-tag">3D / WEB AR</span></span>
+      <span class="imm9-tile-symbol imm9-model-symbol">◈</span>
+      <span class="imm9-tile-bottom"><strong>Узбекская пиала у тебя дома.</strong><small>Вращай 3D-модель · Запусти камеру на телефоне</small><span class="imm9-tile-link">ОТКРЫТЬ AR-МОДЕЛЬ ↗</span></span>
+    </button>
+  </div>
+  <div class="container imm9-feature-foot"><span>✳ Никакой регистрации</span><span>✳ Настоящая 360° фотосъёмка Ташкента</span><span>✳ AR требует HTTPS и совместимого устройства</span></div>
 </section>
 
     <section id="planner" class="section planner-section" aria-labelledby="planner-title">
@@ -169,25 +181,38 @@
 
     <section class="closing-section"><div class="closing-texture"></div><div class="container closing-grid"><div><div class="eyebrow">YAXSHI ISHTAHA!</div><h2>Ну что,<br><em>поедим?</em></h2><p>Каждый большой маршрут начинается с одного маленького «попробую».</p><a href="#tours" class="button button-cream">Выбрать приключение <span aria-hidden="true">↗</span></a></div><div class="closing-plate" aria-hidden="true"><img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация плова"></div></div></section>
   </main>
-  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации, в том числе сцены интерактивного путешествия. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Видео на первом экране иммерсивного раздела — художественный анимированный монтаж из иллюстраций. Отдельно доступно реальное видео базара (Lokk1y, Wikimedia Commons, CC BY-SA 4.0) и реальные панорамы 360° Музея истории Узбекистана (Aleksey Chalabyan / Xelgen, Wikimedia Commons, CC BY-SA 4.0). Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="tour-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
 
-<dialog id="v7-experience-dialog" class="v7-experience-dialog cinema-dialog" aria-label="Живой Ташкент — интерактивное путешествие">
-  <div class="cinema-stage" id="v7-experience-stage">
-    <div class="cinema-photo" id="v7-experience-image" aria-hidden="true"></div><div class="cinema-photo cinema-photo-cross" id="cinema-photo-cross" aria-hidden="true"></div>
-    <div class="cinema-sky-shimmer" aria-hidden="true"></div><div class="cinema-fog cinema-fog-a" aria-hidden="true"></div><div class="cinema-fog cinema-fog-b" aria-hidden="true"></div><div class="cinema-vignette" aria-hidden="true"></div>
-    <div class="cinema-particles" id="cinema-particles" aria-hidden="true"></div>
-    <header class="cinema-hud-top"><div class="cinema-hud-brand"><span class="cinema-crest">✺</span><div><strong>ВКУСНЫЙ<br>ТАШКЕНТ</strong><small>THE CITY EXPERIENCE</small></div></div><div class="cinema-hud-right"><span class="cinema-hud-live"><i></i> LIVE EXPERIENCE</span><button id="cinema-night" class="cinema-hud-button" aria-pressed="false" type="button">☾ НОЧЬ</button><button id="cinema-auto" class="cinema-hud-button" aria-pressed="false" type="button">▷ АВТОТУР</button><button id="v7-experience-close" class="cinema-hud-close" type="button" aria-label="Закрыть впечатление">✕ <span>ВЫХОД</span></button></div></header>
-    <div class="cinema-hud-left"><div class="cinema-episode-line"><span id="v7-story-number">01 / 05</span><span class="cinema-hud-rule"></span><span id="cinema-episode-kind">ПРОЛОГ / ЗНАКОМСТВО</span></div><div class="cinema-story-heading" id="v7-story-title">ТАШКЕНТ,<br>ТЫ ПРЕКРАСЕН.</div><p id="v7-story-desc" class="cinema-story-desc">Город встречает ароматами, светом и гостеприимством.</p><div class="cinema-story-mini" id="v7-story-tip">✳ Выбирай сияющие точки на экране, чтобы узнать больше.</div><div class="cinema-story-cta"><button id="v7-story-place" class="cinema-main-btn" type="button">УЗНАТЬ О МЕСТЕ ↗</button><button id="cinema-add" class="cinema-add-btn" type="button">+ В МОЙ МАРШРУТ</button></div></div>
-    <div id="cinema-hotspots" class="cinema-hotspots" aria-label="Интерактивные точки на изображении"></div>
-    <aside class="cinema-discovery" id="cinema-discovery" aria-live="polite"><div class="cinema-discovery-line"><span>✳ ТЫ НАШЁЛ МЕСТО</span><span id="cinema-discovery-count">01 / 03</span></div><h3 id="cinema-discovery-title">Базар Чорсу</h3><p id="cinema-discovery-desc"></p><div class="cinema-discovery-bottom"><span id="cinema-discovery-taste"></span><button id="cinema-discovery-add" type="button">Добавить ↗</button></div></aside>
-    <div class="cinema-swipe-note">↔ <span>ПЕРЕТАСКИВАЙ ПЕЙЗАЖ · НАЖИМАЙ НА МЕТКИ</span></div>
-    <div class="cinema-chapters"><div class="cinema-chapters-label"><span>ПУТЕШЕСТВИЕ В ПЯТИ ГЛАВАХ</span><button id="v7-story-next" type="button">СЛЕДУЮЩАЯ ГЛАВА →</button></div><div class="cinema-chapter-list" id="v7-experience-progress"></div></div>
-    <div class="cinema-story-footnote">Художественная интерактивная реконструкция · изображения не являются панорамной съёмкой или прямой трансляцией</div>
+<dialog id="imm9-video-dialog" class="imm9-dialog" aria-label="Настоящие видео из Узбекистана">
+  <div class="imm9-modal-shell"><header class="imm9-modal-header"><div><span>DOCUMENTARY VIDEO / REAL FOOTAGE</span><strong>Узбекистан в движении</strong></div><button type="button" class="imm9-close" data-imm9-close aria-label="Закрыть видео">×</button></header>
+  <div class="imm9-real-video-frame"><video id="imm9-real-video" controls playsinline preload="none" poster="assets/places/chorsu.webp">
+    <source src="https://upload.wikimedia.org/wikipedia/commons/2/23/Uzbek_Bazaar.webm" type="video/webm">
+    Ваш браузер не поддерживает видео WebM.
+  </video></div>
+  <div class="imm9-modal-foot"><div><b>Кадры традиционного базара Узбекистана</b><p>Реальное видео, снятое в Узбекистане. Не утверждаем, что на кадрах именно Чорсу. Автор: Lokk1y, Wikimedia Commons, CC BY-SA 4.0.</p><a href="https://commons.wikimedia.org/wiki/File:Uzbek_Bazaar.webm" target="_blank" rel="noopener noreferrer">Источник и лицензия ↗</a></div><button type="button" id="imm9-video-fallback" class="imm9-soft-btn">Показать видеозаставку</button></div>
   </div>
 </dialog>
-
+<dialog id="imm9-vr-dialog" class="imm9-dialog imm9-immersive-modal" aria-label="Интерактивная панорама 360 градусов">
+  <div class="imm9-modal-shell"><header class="imm9-modal-header"><div><span>360° / VIRTUAL TOUR</span><strong>Внутри Ташкента</strong></div><button type="button" class="imm9-close" data-imm9-close aria-label="Закрыть панораму">×</button></header>
+  <div class="imm9-vr-toolbar"><div role="group" aria-label="Выбор панорамы"><button type="button" id="imm9-panorama-outside" class="is-active">У Музея истории</button><button type="button" id="imm9-panorama-inside">Внутри музея</button></div><div class="imm9-vr-right"><button type="button" id="imm9-vr-gyro">◉ Гироскоп</button><button type="button" id="imm9-vr-cardboard">◉ VR-очки</button><button type="button" id="imm9-vr-fullscreen">⛶ На весь экран</button></div></div>
+  <div class="imm9-panorama-stage" id="imm9-pano-stage"><canvas id="imm9-panorama" aria-label="Круговая панорама 360 градусов: перетаскивайте для изменения направления взгляда"></canvas><div class="imm9-pano-loader" id="imm9-pano-loader">Подключаем настоящую панораму Ташкента…</div><div class="imm9-pano-hint" id="imm9-pano-hint">↔ Тяни мышью или пальцем • Колёсико меняет масштаб</div><div class="imm9-pano-compass" id="imm9-pano-compass">N · 000°</div></div>
+  <div class="imm9-modal-foot"><div><b id="imm9-vr-place-title">Около Государственного музея истории Узбекистана</b><p id="imm9-vr-description">Реальная сферическая фотосъёмка Ташкента, 2023 год. Можно смотреть вокруг себя, как с места съёмки.</p><small>Автор панорам: Aleksey Chalabyan (Xelgen), CC BY-SA 4.0. Источник Wikimedia Commons. Режим очков показывает одну сферическую фотографию двум глазам и не создаёт стереоглубину.</small></div><a id="imm9-vr-source" href="https://commons.wikimedia.org/wiki/File:360_panorama_near_State_Museum_of_History_of_Uzbekistan.jpg" target="_blank" rel="noopener noreferrer">Фотография и лицензия ↗</a></div>
+  </div>
+</dialog>
+<dialog id="imm9-ar-dialog" class="imm9-dialog imm9-immersive-modal" aria-label="3D и дополненная реальность — узбекская пиала">
+  <div class="imm9-modal-shell"><header class="imm9-modal-header"><div><span>UZBEK ART / 3D + AUGMENTED REALITY</span><strong>Поставь пиалу на свой стол</strong></div><button type="button" class="imm9-close" data-imm9-close aria-label="Закрыть 3D-просмотр">×</button></header>
+  <div class="imm9-ar-layout"><div class="imm9-model-stage">
+      <model-viewer id="imm9-model" src="assets/models/uzbek_piyala.glb" alt="Оригинальная объёмная 3D-модель узбекской расписной пиалы с чаем на блюдце" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" ar-placement="floor" camera-controls auto-rotate rotation-per-second="18deg" shadow-intensity="0.7" exposure="1" camera-orbit="25deg 72deg 0.45m" min-camera-orbit="auto auto 0.18m" max-camera-orbit="auto auto 1.6m" interaction-prompt="auto" touch-action="pan-y">
+        <button slot="ar-button" type="button" class="imm9-gold-btn imm9-ar-action">◈ Поставить в комнате (AR) ↗</button>
+        <div slot="poster" class="imm9-ar-placeholder">Загружаем объёмную модель пиалы…</div>
+      </model-viewer>
+      <video id="imm9-model-fallback" class="imm9-model-fallback" autoplay muted loop playsinline preload="metadata" aria-label="Вращающийся предпросмотр оригинальной 3D-модели пиалы"><source src="assets/video/piyala-turntable.mp4" type="video/mp4"></video><div id="imm9-model-loading" class="imm9-model-loading">Загружаем интерактивную 3D-модель…</div>
+    </div><div class="imm9-ar-info"><span class="imm9-product-kicker">СУВЕНИР НА КОНЧИКАХ ПАЛЬЦЕВ</span><h3>Традиция, которую можно покрутить.</h3><p>Это не картинка: модель состоит из настоящей 3D-геометрии. Вращай её мышью, увеличивай, рассматривай орнаменты. На совместимом Android/iPhone можно разместить модель в пространстве с помощью камеры.</p><div class="imm9-ar-specs"><span>◆ 3D-модель GLB включена в сайт</span><span>◆ Работает на ПК как 3D-просмотр</span><span>◆ AR зависит от телефона, браузера и HTTPS</span></div><button type="button" class="imm9-soft-btn" id="imm9-ar-check">Проверить доступность AR</button><p id="imm9-ar-status" role="status" aria-live="polite"></p><a href="assets/models/uzbek_piyala.glb" download="uzbek_piyala.glb" class="imm9-model-download">Скачать саму 3D-модель ↗</a></div></div>
+    <div class="imm9-modal-foot"><span>Оригинальная стилизованная модель, созданная специально для «Вкусного Ташкента». Не является оцифровкой исторического предмета.</span></div>
+  </div>
+</dialog>
   <dialog id="place-detail-dialog" class="place-detail-dialog" aria-label="Информация о месте"></dialog>
   <dialog id="food-library-dialog" class="food-library-dialog" aria-label="Большой путеводитель по узбекской кухне"><div class="food-library-shell"><div class="food-library-header"><div><span class="eyebrow">УЗБЕКСКАЯ ГАСТРОЭНЦИКЛОПЕДИЯ</span><h2>Кухня, которую<br><em>хочется исследовать.</em></h2><p>19 блюд · Состав, подача, традиции и советы для путешествия.</p></div><button id="close-food-library" type="button" aria-label="Закрыть путеводитель">×</button></div><div class="food-library-tools"><input type="search" id="food-library-search" placeholder="Найти блюдо…" aria-label="Поиск по блюдам"><div id="food-library-filters" class="food-library-filters"></div></div><div class="food-library-body"><div id="food-library-list" class="food-library-list"></div><div id="food-library-detail" class="food-library-detail" aria-live="polite"></div></div></div></dialog>
   <dialog id="dish-dialog" class="dish-dialog" aria-labelledby="dish-dialog-title"><div id="dish-dialog-content"></div></dialog>
