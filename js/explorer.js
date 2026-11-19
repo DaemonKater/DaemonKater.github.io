@@ -4,23 +4,23 @@
 (()=>{
 const AS='assets/photos/';
 const PLACES=[
- {id:'chorsu',name:'Базар Чорсу',type:'Еда и рынки',area:'Эски Шахар',lat:41.32673,lng:69.23503,emoji:'🧺',image:AS+'chorsu.webp',what:'Знаменитый рынок под бирюзовым куполом: специи, сухофрукты, лепёшки и жизнь старого Ташкента.',taste:'Самса, нон, нават, халва, сухофрукты; в гастрономических рядах — готовые блюда.',tip:'Уточняй цену до покупки, спрашивай разрешение на съёмку продавцов и следи за вещами в толпе.',time:'Лучше утром',source:'https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/'},
- {id:'kukeldash',name:'Медресе Кукельдаш',type:'Культура',area:'Старый город',lat:41.32316,lng:69.23666,emoji:'🏛️',image:AS+'chorsu.webp',what:'Исторический архитектурный ансамбль рядом с Чорсу. Удобно объединить с прогулкой по рынку.',taste:'После осмотра отправься за свежей самсой и чаем в районе Чорсу.',tip:'Уважай действующие правила посещения религиозных и учебных объектов; не снимай людей без согласия.',time:'Дневная прогулка',source:'https://uzbekistan.travel/en/i/tashkent/'},
- {id:'hazrat',name:'Хазрати Имам',type:'Культура',area:'Старый город',lat:41.33731,lng:69.24008,emoji:'🕌',image:AS+'chorsu.webp',what:'Архитектурный и религиозный комплекс старого города с медресе и площадью.',taste:'Совмести прогулку с дегустацией нона и восточных сладостей в соседних торговых рядах.',tip:'Одежда должна быть уважительной к религиозному месту; во время молитв возможны ограничения доступа.',time:'Утро или день',source:'https://visit.tashkent.uz/en/popular-route/7'},
- {id:'besh',name:'Центр плова Besh Qozon',type:'Еда и рынки',area:'Юнусабад',lat:41.34747,lng:69.28489,emoji:'🍚',image:AS+'plov.webp',what:'Известное место у телебашни, где плов готовят в огромных казанах.',taste:'Ташкентский плов, ачичук и чай. Уточняй доступные разновидности в день визита.',tip:'Планируй визит к обеду, когда готовят плов; ассортимент и время подачи могут меняться.',time:'К обеду',source:'https://uzbekistan.travel/en/v/gastronomicheskiy-turizm/'},
- {id:'temur',name:'Сквер Амира Темура',type:'Прогулки',area:'Центр',lat:41.31009,lng:69.27953,emoji:'🌳',image:AS+'evening.webp',what:'Зелёный центр города и удобная точка перед прогулкой к музеям, театру и кафе.',taste:'Попробуй лагман, шурпу или манты в одном из ресторанов центра.',tip:'В сквере делай паузы на отдых и фотографируй городскую архитектуру; еду выбирай в кафе вокруг.',time:'День или вечер',source:'https://uzbekistan.travel/en/i/tashkent/'},
- {id:'city',name:'Tashkent City Park',type:'Прогулки',area:'Современный центр',lat:41.31667,lng:69.24861,emoji:'🌆',image:AS+'evening.webp',what:'Современный городской парк для вечерней прогулки, огней и фотоснимков.',taste:'Заверши прогулку десертом, чаем или ужином в заведении поблизости.',tip:'В выходные может быть многолюдно; расписание отдельных активностей проверяй на месте.',time:'Лучше вечером',source:'https://uzbekistan.travel/en/i/tashkent/'},
- {id:'oloy',name:'Алайский базар (Олой)',type:'Еда и рынки',area:'Центр',lat:41.31876,lng:69.28507,emoji:'🍑',image:AS+'chorsu.webp',what:'Центральный продуктовый рынок с фруктами, овощами, орехами и повседневной городской жизнью.',taste:'Сезонные фрукты, орехи, сухофрукты и свежий нон.',tip:'Спрашивай цену и разрешение на дегустацию; рынок — место реальной торговли, не аттракцион.',time:'Первая половина дня',source:'https://visit.tashkent.uz/en/attraction/28'},
- {id:'applied',name:'Музей прикладного искусства',type:'Культура',area:'Центр',lat:41.301258,lng:69.259195,emoji:'🧿',image:AS+'grand.webp',what:'Традиционная резьба, текстиль, керамика и сузани — вдохновение для узбекского орнамента.',taste:'После музея устрой чайную паузу и попробуй местные сладости в центре.',tip:'Уточни режим работы, входные правила и разрешение на фотосъёмку экспонатов.',time:'Дневное посещение',source:'https://uzbekistan.travel/en/i/tashkent/'},
- {id:'navoi',name:'Национальный парк Навои',type:'Прогулки',area:'Чиланзар',lat:41.30148,lng:69.24124,emoji:'🌿',image:AS+'evening.webp',what:'Просторный городской парк с аллеями и местами для отдыха.',taste:'Захвати воду и свежую лепёшку; для полноценного обеда выбери кафе за пределами прогулочной части.',tip:'Не оставляй мусор и соблюдай правила парка; комфортнее гулять в мягкую погоду.',time:'Днём или под вечер',source:'https://mapcarta.com/W32003705'},
- {id:'afsona',name:'Ресторан Afsona',type:'Рестораны',area:'Мирабад',lat:41.2998871,lng:69.2773014,emoji:'🍽️',image:AS+'grand.webp',what:'Ресторан современной узбекской кухни на улице Тараса Шевченко.',taste:'Манты, шашлык, супы и сезонные блюда; уточняй текущее меню.',tip:'Вечером разумно проверить наличие столиков; заранее сообщай о пищевых ограничениях.',time:'Обед или ужин',source:'https://yandex.com/maps/10335/tashkent/house/YkAYdAJnT0wFQFprfX55dHxlZg%3D%3D/'},
- {id:'theatre',name:'Театр имени Алишера Навои',type:'Культура',area:'Центр',lat:41.309163,lng:69.271548,emoji:'🎭',image:AS+'evening.webp',what:'Знаковое здание театра оперы и балета — красивая остановка в культурном центре.',taste:'После прогулки загляни на чай, десерт или ужин в ресторан центра.',tip:'Если хочешь попасть на спектакль, заранее проверь афишу и билеты.',time:'День или вечер',source:'https://uzbekistan.travel/en/i/tashkent/'},
- {id:'tower',name:'Ташкентская телебашня',type:'Культура',area:'Юнусабад',lat:41.34557,lng:69.28467,emoji:'📡',image:AS+'evening.webp',what:'Один из символов Ташкента, с панорамными видами на город.',taste:'Рядом находится знаменитый центр плова Besh Qozon.',tip:'Уточняй часы работы обзорной площадки, стоимость билета и правила входа.',time:'В светлое время',source:'https://visittashkent.uz/places/tashkent-tv-tower/'},
- {id:'caravan',name:'Ресторан Caravan',type:'Рестораны',area:'Яккасарай',lat:41.28514,lng:69.2576,emoji:'🥘',image:AS+'grand.webp',what:'Ресторан национальной кухни с традиционными мотивами в оформлении.',taste:'Шашлык, манты, национальные горячие блюда и чай — актуальное меню уточняй в ресторане.',tip:'При большой компании заранее уточни столик и формат подачи блюд.',time:'Обед или ужин',source:'https://caravanrestaurant.uz/'},
- {id:'minor',name:'Мечеть Минор',type:'Культура',area:'Юнусабад',lat:41.335334,lng:69.275056,emoji:'🕌',image:AS+'chorsu.webp',what:'Современная беломраморная мечеть с бирюзовым куполом возле канала Анхор.',taste:'Сочетай осмотр с гастрономической остановкой у телебашни или в центре.',tip:'Уважай религиозные традиции: соответствующая одежда и отсутствие помех во время молитвы.',time:'День',source:'https://uzbekistan.travel/en/o/the-minor-mosque/'},
- {id:'metro',name:'Метро «Космонавтлар»',type:'Культура',area:'Центр',lat:41.305022,lng:69.265344,emoji:'🚇',image:AS+'evening.webp',what:'Одна из самых выразительных станций метро Ташкента, оформленная на космическую тему.',taste:'После поездки прогуляйся до кафе в центре и попробуй лагман или чай.',tip:'Соблюдай действующие правила метрополитена и не мешай пассажирам при съёмке.',time:'Вне часа пик',source:'https://themetromap.com/uzbekistan/tashkent/tashkent-metro/stations/kosmonavtlar'},
- {id:'abul',name:'Медресе Абулкасым',type:'Культура',area:'Чиланзар',lat:41.3067,lng:69.2399,emoji:'🏺',image:AS+'chorsu.webp',what:'Историческое медресе и традиционная архитектура недалеко от Национального парка.',taste:'После осмотра можно запланировать десерт и чай в районе парка.',tip:'Уточняй доступность внутренних помещений; при осмотре мастерских спрашивай разрешение на фотографии.',time:'Днём',source:'https://visit.tashkent.uz/en/more/historical-place/291'},
- {id:'independence',name:'Площадь Независимости',type:'Прогулки',area:'Центр',lat:41.31539,lng:69.26744,emoji:'✨',image:AS+'evening.webp',what:'Центральная площадь Ташкента, связанная с историей современного Узбекистана.',taste:'По пути к театру Навои найди место для чая и сладостей.',tip:'Возможны ограничения доступа во время официальных мероприятий; внимательно следи за указателями.',time:'День',source:'https://visit.tashkent.uz/en/popular-route/8'}
+ {id:'chorsu',name:'Базар Чорсу',type:'Еда и рынки',area:'Эски Шахар',lat:41.32673,lng:69.23503,emoji:'🧺',image:'assets/places/chorsu.webp',what:'Знаменитый рынок под бирюзовым куполом: специи, сухофрукты, лепёшки и жизнь старого Ташкента.',taste:'Самса, нон, нават, халва, сухофрукты; в гастрономических рядах — готовые блюда.',tip:'Уточняй цену до покупки, спрашивай разрешение на съёмку продавцов и следи за вещами в толпе.',time:'Лучше утром',source:'https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/'},
+ {id:'kukeldash',name:'Медресе Кукельдаш',type:'Культура',area:'Старый город',lat:41.32316,lng:69.23666,emoji:'🏛️',image:'assets/places/kukeldash.webp',what:'Исторический архитектурный ансамбль рядом с Чорсу. Удобно объединить с прогулкой по рынку.',taste:'После осмотра отправься за свежей самсой и чаем в районе Чорсу.',tip:'Уважай действующие правила посещения религиозных и учебных объектов; не снимай людей без согласия.',time:'Дневная прогулка',source:'https://uzbekistan.travel/en/i/tashkent/'},
+ {id:'hazrat',name:'Хазрати Имам',type:'Культура',area:'Старый город',lat:41.33731,lng:69.24008,emoji:'🕌',image:'assets/places/hazrat.webp',what:'Архитектурный и религиозный комплекс старого города с медресе и площадью.',taste:'Совмести прогулку с дегустацией нона и восточных сладостей в соседних торговых рядах.',tip:'Одежда должна быть уважительной к религиозному месту; во время молитв возможны ограничения доступа.',time:'Утро или день',source:'https://visit.tashkent.uz/en/popular-route/7'},
+ {id:'besh',name:'Центр плова Besh Qozon',type:'Еда и рынки',area:'Юнусабад',lat:41.34747,lng:69.28489,emoji:'🍚',image:'assets/places/besh.webp',what:'Известное место у телебашни, где плов готовят в огромных казанах.',taste:'Ташкентский плов, ачичук и чай. Уточняй доступные разновидности в день визита.',tip:'Планируй визит к обеду, когда готовят плов; ассортимент и время подачи могут меняться.',time:'К обеду',source:'https://uzbekistan.travel/en/v/gastronomicheskiy-turizm/'},
+ {id:'temur',name:'Сквер Амира Темура',type:'Прогулки',area:'Центр',lat:41.31009,lng:69.27953,emoji:'🌳',image:'assets/places/temur.webp',what:'Зелёный центр города и удобная точка перед прогулкой к музеям, театру и кафе.',taste:'Попробуй лагман, шурпу или манты в одном из ресторанов центра.',tip:'В сквере делай паузы на отдых и фотографируй городскую архитектуру; еду выбирай в кафе вокруг.',time:'День или вечер',source:'https://uzbekistan.travel/en/i/tashkent/'},
+ {id:'city',name:'Tashkent City Park',type:'Прогулки',area:'Современный центр',lat:41.31667,lng:69.24861,emoji:'🌆',image:'assets/places/city.webp',what:'Современный городской парк для вечерней прогулки, огней и фотоснимков.',taste:'Заверши прогулку десертом, чаем или ужином в заведении поблизости.',tip:'В выходные может быть многолюдно; расписание отдельных активностей проверяй на месте.',time:'Лучше вечером',source:'https://uzbekistan.travel/en/i/tashkent/'},
+ {id:'oloy',name:'Алайский базар (Олой)',type:'Еда и рынки',area:'Центр',lat:41.31876,lng:69.28507,emoji:'🍑',image:'assets/places/oloy.webp',what:'Центральный продуктовый рынок с фруктами, овощами, орехами и повседневной городской жизнью.',taste:'Сезонные фрукты, орехи, сухофрукты и свежий нон.',tip:'Спрашивай цену и разрешение на дегустацию; рынок — место реальной торговли, не аттракцион.',time:'Первая половина дня',source:'https://visit.tashkent.uz/en/attraction/28'},
+ {id:'applied',name:'Музей прикладного искусства',type:'Культура',area:'Центр',lat:41.301258,lng:69.259195,emoji:'🧿',image:'assets/places/applied.webp',what:'Традиционная резьба, текстиль, керамика и сузани — вдохновение для узбекского орнамента.',taste:'После музея устрой чайную паузу и попробуй местные сладости в центре.',tip:'Уточни режим работы, входные правила и разрешение на фотосъёмку экспонатов.',time:'Дневное посещение',source:'https://uzbekistan.travel/en/i/tashkent/'},
+ {id:'navoi',name:'Национальный парк Навои',type:'Прогулки',area:'Чиланзар',lat:41.30148,lng:69.24124,emoji:'🌿',image:'assets/places/navoi.webp',what:'Просторный городской парк с аллеями и местами для отдыха.',taste:'Захвати воду и свежую лепёшку; для полноценного обеда выбери кафе за пределами прогулочной части.',tip:'Не оставляй мусор и соблюдай правила парка; комфортнее гулять в мягкую погоду.',time:'Днём или под вечер',source:'https://mapcarta.com/W32003705'},
+ {id:'afsona',name:'Ресторан Afsona',type:'Рестораны',area:'Мирабад',lat:41.2998871,lng:69.2773014,emoji:'🍽️',image:'assets/places/afsona.webp',what:'Ресторан современной узбекской кухни на улице Тараса Шевченко.',taste:'Манты, шашлык, супы и сезонные блюда; уточняй текущее меню.',tip:'Вечером разумно проверить наличие столиков; заранее сообщай о пищевых ограничениях.',time:'Обед или ужин',source:'https://yandex.com/maps/10335/tashkent/house/YkAYdAJnT0wFQFprfX55dHxlZg%3D%3D/'},
+ {id:'theatre',name:'Театр имени Алишера Навои',type:'Культура',area:'Центр',lat:41.309163,lng:69.271548,emoji:'🎭',image:'assets/places/theatre.webp',what:'Знаковое здание театра оперы и балета — красивая остановка в культурном центре.',taste:'После прогулки загляни на чай, десерт или ужин в ресторан центра.',tip:'Если хочешь попасть на спектакль, заранее проверь афишу и билеты.',time:'День или вечер',source:'https://uzbekistan.travel/en/i/tashkent/'},
+ {id:'tower',name:'Ташкентская телебашня',type:'Культура',area:'Юнусабад',lat:41.34557,lng:69.28467,emoji:'📡',image:'assets/places/tower.webp',what:'Один из символов Ташкента, с панорамными видами на город.',taste:'Рядом находится знаменитый центр плова Besh Qozon.',tip:'Уточняй часы работы обзорной площадки, стоимость билета и правила входа.',time:'В светлое время',source:'https://visittashkent.uz/places/tashkent-tv-tower/'},
+ {id:'caravan',name:'Ресторан Caravan',type:'Рестораны',area:'Яккасарай',lat:41.28514,lng:69.2576,emoji:'🥘',image:'assets/places/caravan.webp',what:'Ресторан национальной кухни с традиционными мотивами в оформлении.',taste:'Шашлык, манты, национальные горячие блюда и чай — актуальное меню уточняй в ресторане.',tip:'При большой компании заранее уточни столик и формат подачи блюд.',time:'Обед или ужин',source:'https://caravanrestaurant.uz/'},
+ {id:'minor',name:'Мечеть Минор',type:'Культура',area:'Юнусабад',lat:41.335334,lng:69.275056,emoji:'🕌',image:'assets/places/minor.webp',what:'Современная беломраморная мечеть с бирюзовым куполом возле канала Анхор.',taste:'Сочетай осмотр с гастрономической остановкой у телебашни или в центре.',tip:'Уважай религиозные традиции: соответствующая одежда и отсутствие помех во время молитвы.',time:'День',source:'https://uzbekistan.travel/en/o/the-minor-mosque/'},
+ {id:'metro',name:'Метро «Космонавтлар»',type:'Культура',area:'Центр',lat:41.305022,lng:69.265344,emoji:'🚇',image:'assets/places/metro.webp',what:'Одна из самых выразительных станций метро Ташкента, оформленная на космическую тему.',taste:'После поездки прогуляйся до кафе в центре и попробуй лагман или чай.',tip:'Соблюдай действующие правила метрополитена и не мешай пассажирам при съёмке.',time:'Вне часа пик',source:'https://themetromap.com/uzbekistan/tashkent/tashkent-metro/stations/kosmonavtlar'},
+ {id:'abul',name:'Медресе Абулкасым',type:'Культура',area:'Чиланзар',lat:41.3067,lng:69.2399,emoji:'🏺',image:'assets/places/abul.webp',what:'Историческое медресе и традиционная архитектура недалеко от Национального парка.',taste:'После осмотра можно запланировать десерт и чай в районе парка.',tip:'Уточняй доступность внутренних помещений; при осмотре мастерских спрашивай разрешение на фотографии.',time:'Днём',source:'https://visit.tashkent.uz/en/more/historical-place/291'},
+ {id:'independence',name:'Площадь Независимости',type:'Прогулки',area:'Центр',lat:41.31539,lng:69.26744,emoji:'✨',image:'assets/places/independence.webp',what:'Центральная площадь Ташкента, связанная с историей современного Узбекистана.',taste:'По пути к театру Навои найди место для чая и сладостей.',tip:'Возможны ограничения доступа во время официальных мероприятий; внимательно следи за указателями.',time:'День',source:'https://visit.tashkent.uz/en/popular-route/8'}
 ];
 const DISHES=[
  {name:'Плов',uz:'Palov / osh',cat:'Основное',img:'plov.webp',desc:'Рис, морковь, мясо, зира и чеснок в большом казане. В каждом регионе свой почерк.',serve:'Часто подают с салатом ачичук, лепёшкой и чаем.',tip:'В центре плова можно наблюдать приготовление в больших казанах.'},
@@ -74,20 +74,32 @@ try{const v=JSON.parse(localStorage.getItem('tashkent-planner-v6')||'null');if(v
 const persist=()=>{try{localStorage.setItem('tashkent-planner-v6',JSON.stringify(state))}catch(e){}};
 let map=null,basemap=null,satellite=null,markers=[],line=null,mapAbort=null,routeRequest=0,mapMode='streets';
 const active=()=>state.plans[state.selectedDay]||[];
+// Local schematic fallback: only pin coordinates are geographic. Decorative blocks are NOT street data.
+function renderSchematic(){
+ const root=$('#planner-map');if(!root)return;
+ const chosen=active();
+ const coord=id=>{const p=byId[id];return {x:(8+(p.lng-69.22)/(69.305-69.22)*84).toFixed(2),y:(9+(41.36-p.lat)/(41.36-41.28)*81).toFixed(2)};};
+ const route=chosen.map(id=>{const p=coord(id);return `${p.x},${p.y}`}).join(' ');
+ const bubbles=chosen.map((id,i)=>{const p=coord(id);return `<button type="button" data-fallback-place="${id}" class="fallback-location" style="left:${p.x}%;top:${p.y}%" aria-label="${esc(byId[id].name)}"><b>${i+1}</b></button>`}).join('');
+ root.innerHTML=`<div class="local-schematic"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="local-blocks" width="19" height="18" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="13" height="10" rx="1" fill="#e0e9d5"/><path d="M0 13h19 M16 0v18" stroke="#fef8ed" stroke-width="2"/></pattern></defs><rect width="100" height="100" fill="#f5edda"/><rect width="100" height="100" fill="url(#local-blocks)" opacity=".95"/><path d="M-8 67Q16 48 31 53 T68 26 T110 30" stroke="#c5ddd5" stroke-width="5" fill="none"/><path d="M-5 20Q20 29 40 20 T110 68" stroke="#fffdfa" stroke-width="2.6" fill="none"/><path d="M0 88Q28 68 48 75 T110 45" stroke="#fffdfa" stroke-width="2.8" fill="none"/>${chosen.length>1?`<polyline points="${route}" fill="none" stroke="#bf6143" stroke-width=".7" stroke-dasharray="1.3 1.2" stroke-linecap="round"/>`:''}</svg>${bubbles}<div class="schematic-city-label"><strong>ТАШКЕНТ</strong><small>СХЕМА ОСТАНОВОК</small></div><div class="schematic-caption"><b>Схема расположения</b><span>Точки соответствуют координатам. Улицы условные, для навигации открой Google Карты.</span></div><a class="schematic-map-link" target="_blank" rel="noopener noreferrer" href="${directions(chosen,state.mode,true)}">Открыть настоящую карту ↗</a></div>`;
+ root.querySelectorAll('[data-fallback-place]').forEach(el=>el.onclick=()=>showPlace(el.dataset.fallbackPlace));
+ $('#planner-map-status').textContent='Схема точек · внешняя карта временно недоступна';
+}
 function initPlannerMap(){
- if(typeof L==='undefined'){$('#planner-map').innerHTML='<div class="planner-map-fail">Картографический сервис недоступен. Маршрут всё равно можно открыть в Google Картах.</div>';return}
+ if(typeof L==='undefined'){renderSchematic();return}
  try{
   map=L.map('planner-map',{scrollWheelZoom:false,zoomControl:false}).setView([41.315,69.265],12);
   L.control.zoom({position:'bottomright'}).addTo(map);
   basemap=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'}).addTo(map);
   satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,attribution:'© Esri'});
+  let satelliteErrors=0;satellite.on('tileload',()=>satelliteErrors=0);satellite.on('tileerror',()=>{if(mapMode==='satellite'&&++satelliteErrors>=7){map.remove();map=null;renderSchematic();}});
   let errors=0,hasTiles=false;basemap.on('tileload',()=>{hasTiles=true;$('#planner-map-status').textContent='Карта улиц'});
-  basemap.on('tileerror',()=>{if(!hasTiles&&++errors>=5){$('#planner-map-status').textContent='Переход на резервную карту';basemap.remove();if(!map.hasLayer(satellite))satellite.addTo(map);mapMode='satellite';$('#planner-map-toggle').textContent='Улицы ↗';}});
+  basemap.on('tileerror',()=>{if(!hasTiles&&++errors>=5){$('#planner-map-status').textContent='Переходим на резервную карту';basemap.remove();if(!map.hasLayer(satellite))satellite.addTo(map);mapMode='satellite';$('#planner-map-toggle').textContent='Улицы ↗';}});
   setTimeout(()=>map?.invalidateSize(),350);
- }catch(e){console.warn('Explorer map:',e);$('#planner-map-status').textContent='Открой маршрут во внешней карте'}
+ }catch(e){console.warn('Explorer map:',e);map=null;renderSchematic()}
 }
 function fitPlanner(){if(!map)return;const pts=active().map(id=>[byId[id].lat,byId[id].lng]);if(pts.length>1)map.fitBounds(pts,{padding:[62,62],maxZoom:15,animate:true});else if(pts.length)map.setView(pts[0],14);else map.setView([41.315,69.265],12)}
-function renderMap(){if(!map)return;
+function renderMap(){if(!map){renderSchematic();return;}
  const ids=active();routeRequest++;if(mapAbort){mapAbort.abort();mapAbort=null}markers.forEach(m=>m.remove());markers=[];if(line){line.remove();line=null}
  ids.forEach((id,i)=>{const p=byId[id];const marker=L.marker([p.lat,p.lng],{icon:L.divIcon({className:'explorer-marker-root',html:`<span class="explorer-marker">${i+1}</span>`,iconSize:[42,42],iconAnchor:[21,21]})}).addTo(map);marker.bindTooltip(esc(p.name),{direction:'top'});marker.on('click',()=>showPlace(id));markers.push(marker)});
  if(ids.length>1){line=L.polyline(ids.map(id=>[byId[id].lat,byId[id].lng]),{color:'#c45f40',weight:4,dashArray:'7 9',opacity:.85}).addTo(map);$('#planner-map-status').textContent='Порядок остановок · схематично';
@@ -105,7 +117,28 @@ async function loadRoadRoute(ids,seq){
  }catch(e){if(seq===routeRequest)$('#planner-map-status').textContent='Маршрут схематичен · точная навигация по кнопке';}
  finally{clearTimeout(t)}
 }
-function showPlace(id){const p=byId[id];if(!p)return;$('#place-spotlight').innerHTML=`<div class="spotlight-head"><span>${p.emoji} ${esc(p.type)} · ${esc(p.area)}</span><button type="button" id="spotlight-close" aria-label="Закрыть">×</button></div><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><div class="spotlight-advice"><strong>🍽 Что попробовать</strong><span>${esc(p.taste)}</span></div><div class="spotlight-advice"><strong>✳ Местный совет</strong><span>${esc(p.tip)}</span></div><div class="spotlight-links"><a href="${directions([id])}" target="_blank" rel="noopener noreferrer">На карте ↗</a><a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">О месте ↗</a></div>`;$('#place-spotlight').hidden=false;$('#spotlight-close').onclick=()=>{$('#place-spotlight').hidden=true};}
+function addPlaceToDay(id, day=state.selectedDay){
+ if(!byId[id]||day<0||day>=state.days) return;
+ const wasHere=state.plans[day].includes(id);
+ if(wasHere) state.plans[day]=state.plans[day].filter(x=>x!==id);
+ else {state.plans=state.plans.map(plan=>plan.filter(x=>x!==id));state.plans[day].push(id)}
+ update();
+ toast(wasHere?'Место убрано из этого дня':`${byId[id].name}: добавлено в день ${day+1}`);
+}
+function showPlace(id){
+ const p=byId[id];if(!p)return;
+ const dlg=$('#place-detail-dialog');if(!dlg)return;
+ const inDay=state.plans.findIndex(day=>day.includes(id));
+ dlg.innerHTML=`<div class="place-detail-card">
+ <div class="place-detail-cover"><img src="${p.image}" alt="Художественная иллюстрация: ${esc(p.name)}"><span class="place-detail-kicker">${p.emoji} ${esc(p.area)} · ${esc(p.type)}</span><button type="button" class="place-detail-close" aria-label="Закрыть">✕</button></div>
+ <div class="place-detail-inner"><div class="place-detail-intro"><span class="eyebrow">МЕСТО НА КАРТЕ / TOSHKENT</span><h2>${esc(p.name)}</h2><p>${esc(p.what)}</p></div>
+ <div class="place-detail-recs"><div class="place-reco"><span>🍽️</span><div><b>Что попробовать</b><p>${esc(p.taste)}</p></div></div><div class="place-reco"><span>✳</span><div><b>Как себя вести</b><p>${esc(p.tip)}</p></div></div><div class="place-reco"><span>☀️</span><div><b>Когда лучше идти</b><p>${esc(p.time)}</p></div></div></div>
+ <div class="place-detail-cta"><button type="button" class="v7-primary" id="place-dialog-add">${inDay===state.selectedDay?'✓ Убрать из дня '+(state.selectedDay+1):'✳ Добавить в день '+(state.selectedDay+1)}</button><a class="v7-secondary" href="${directions([id])}" target="_blank" rel="noopener noreferrer">Открыть в Google Картах ↗</a><a class="v7-source" href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">Источник сведений ↗</a></div></div></div>`;
+ dlg.querySelector('.place-detail-close').onclick=()=>dlg.close();
+ dlg.querySelector('#place-dialog-add').onclick=()=>{addPlaceToDay(id);dlg.close()};
+ if(!dlg.open)dlg.showModal();
+}
+
 function dayTabs(){
  $('#planner-days').innerHTML=state.plans.map((ids,i)=>`<button class="planner-day ${i===state.selectedDay?'is-active':''}" type="button" data-switch-day="${i}" aria-pressed="${i===state.selectedDay}"><span>День ${i+1}</span><small>${ids.length} мест</small></button>`).join('');
  $$('[data-switch-day]').forEach(b=>b.onclick=()=>{state.selectedDay=Number(b.dataset.switchDay);update();});
@@ -130,22 +163,39 @@ let placeFilter='Все',placeQuery='';
 function renderPlaces(){
  const ids=active();const otherDay=id=>state.plans.findIndex((plan,i)=>i!==state.selectedDay&&plan.includes(id));
  const filtered=PLACES.filter(p=>(placeFilter==='Все'||p.type===placeFilter)&&(`${p.name} ${p.what} ${p.taste} ${p.area}`.toLowerCase().includes(placeQuery)));
- $('#planner-place-count').textContent=`${filtered.length} локаций`;
- $('#planner-place-grid').innerHTML=filtered.map(p=>{const on=ids.includes(p.id),other=otherDay(p.id);
- return `<article class="place-choice"><img src="${p.image}" alt="Атмосфера ${esc(p.name)}" loading="lazy"><div class="place-choice-info"><small>${p.emoji} ${esc(p.area)} · ${esc(p.type)}</small><h4>${esc(p.name)}</h4><p>${esc(p.taste)}</p><div class="place-choice-actions"><button type="button" class="place-choice-more" data-show-place="${p.id}">Что знать ↗</button><button type="button" class="place-choice-add ${on?'chosen':''}" data-add-place="${p.id}" aria-pressed="${on}">${on?'✓ В дне':other>=0?`+ В день ${state.selectedDay+1}`:'+ Добавить'}</button></div></div></article>`}).join('')||'<p class="planner-no-results">Ничего не найдено — попробуй другой запрос.</p>';
- $$('[data-add-place]').forEach(b=>b.onclick=()=>{const id=b.dataset.addPlace;
-  if(active().includes(id))state.plans[state.selectedDay]=active().filter(s=>s!==id);
-  else {state.plans.forEach((p,i)=>{if(i!==state.selectedDay)state.plans[i]=p.filter(s=>s!==id)});active().push(id)}
-  update();
- });
+ $('#planner-place-count').textContent=`${filtered.length} мест`;
+ $('#planner-place-grid').innerHTML=filtered.map((p,i)=>{
+  const on=ids.includes(p.id),other=otherDay(p.id);
+  return `<article class="place-choice ${on?'is-picked':''}" style="--place-order:${i}"><button class="place-choice-more v7-photo" type="button" data-show-place="${p.id}" aria-label="Подробно о месте ${esc(p.name)}"><img src="${p.image}" alt="${esc(p.name)}: тематическая иллюстрация" loading="lazy" width="200" height="155"><span class="v7-photo-zoom">↗</span></button><div class="place-choice-info"><small>${p.emoji} ${esc(p.area)}</small><button type="button" class="place-title-btn" data-show-place="${p.id}">${esc(p.name)}</button><p>${esc(p.what)}</p><div class="place-choice-actions"><button type="button" class="place-choice-more v7-more" data-show-place="${p.id}">О месте и советы ↗</button><button type="button" class="place-choice-add ${on?'chosen':''}" data-add-place="${p.id}" aria-pressed="${on}" aria-label="${on?'Убрать '+esc(p.name):'Добавить '+esc(p.name)+' в день '+(state.selectedDay+1)}">${on?'✓':other>=0?'↻':'+'}</button></div></div></article>`;
+ }).join('')||'<p class="planner-no-results">По этому запросу мест нет. Попробуй другой фильтр.</p>';
+ $$('[data-add-place]',$('#planner-place-grid')).forEach(b=>b.onclick=()=>addPlaceToDay(b.dataset.addPlace));
  $$('[data-show-place]',$('#planner-place-grid')).forEach(b=>b.onclick=()=>showPlace(b.dataset.showPlace));
+ const summary=$('#v7-picker-summary');if(summary){summary.textContent=`День ${state.selectedDay+1} · ${ids.length} выбрано`;}
 }
+
 function update(){dayTabs();renderItinerary();renderPlaces();renderMap();persist()}
 function optimize(){const ids=active();if(ids.length<3){toast('Для перестановки нужны хотя бы три остановки');return}
  const result=[ids[0]],left=ids.slice(1);while(left.length){const prev=byId[result.at(-1)];left.sort((a,b)=>dist(prev,byId[a])-dist(prev,byId[b]));result.push(left.shift())}
- state.plans[state.selectedDay]=result;update();toast('Порядок рассчитан по близости точек. Это приблизительная, не оптимальная по времени схема.');
+ state.plans[state.selectedDay]=result;update();toast('Точки переставлены по близости. Точное время поездки смотри в Google Картах.');
 }
 function resetPresets(){state.plans=Array.from({length:state.days},(_,i)=>[...PRESETS[i]]);state.selectedDay=0;update();toast('Готовый план восстановлен')}
+
+function suggestSmartPlan(){
+ const choices=PLACES.filter(p=>placeFilter==='Все'||p.type===placeFilter);
+ const preferred=choices.length>=state.days*2?choices:PLACES;
+ const next=Array.from({length:state.days},()=>[]);
+ const unclaimed=new Set(preferred.map(p=>p.id));
+ for(let d=0;d<state.days;d++){
+  const seed=PRESETS[d].find(id=>unclaimed.has(id))||Array.from(unclaimed)[0];
+  if(!seed)continue;next[d].push(seed);unclaimed.delete(seed);
+  const target=Math.min(4,Math.ceil((unclaimed.size+1)/(state.days-d)));
+  while(next[d].length<target&&unclaimed.size){
+   const last=byId[next[d].at(-1)];const closest=[...unclaimed].sort((a,b)=>dist(byId[a],last)-dist(byId[b],last))[0];
+   next[d].push(closest);unclaimed.delete(closest);
+  }
+ }
+ state.plans=next;state.selectedDay=0;update();toast('Подобрал программу по близости мест. Проверь часы работы и расстояния в навигаторе.');
+}
 function initPlanner(){
  const count=$('#planner-day-count');count.value=String(state.days);$('#planner-transport').value=state.mode;
  count.addEventListener('change',()=>{const days=Number(count.value);if(days>state.days)while(state.plans.length<days)state.plans.push([...PRESETS[state.plans.length]]);else state.plans=state.plans.slice(0,days);state.days=days;state.selectedDay=Math.min(state.selectedDay,days-1);update()});
@@ -154,13 +204,21 @@ function initPlanner(){
  $('#planner-reset').onclick=resetPresets;
  $('#planner-optimize').onclick=optimize;
  $('#planner-clear-day').onclick=()=>{state.plans[state.selectedDay]=[];update()};
- $('#planner-map-fit').onclick=fitPlanner;
- $('#planner-map-toggle').onclick=()=>{if(!map)return;if(mapMode==='streets'){basemap?.remove();satellite.addTo(map);mapMode='satellite';$('#planner-map-toggle').textContent='Улицы ↗';}else{satellite?.remove();basemap.addTo(map);mapMode='streets';$('#planner-map-toggle').textContent='Спутник ↗'} };
+ $('#planner-map-fit').onclick=()=>{if(map)fitPlanner();else renderSchematic()};
+ $('#planner-map-toggle').onclick=()=>{if(!map){window.open(directions(active(),state.mode,true),'_blank','noopener');return;}if(mapMode==='streets'){basemap?.remove();satellite.addTo(map);mapMode='satellite';$('#planner-map-toggle').textContent='Улицы ↗';}else{satellite?.remove();basemap.addTo(map);mapMode='streets';$('#planner-map-toggle').textContent='Спутник ↗'} };
  $('#planner-filters').innerHTML=['Все','Еда и рынки','Рестораны','Культура','Прогулки'].map(c=>`<button type="button" class="planner-filter ${c==='Все'?'is-active':''}" data-place-filter="${c}">${c}</button>`).join('');
  $$('[data-place-filter]').forEach(b=>b.onclick=()=>{placeFilter=b.dataset.placeFilter;$$('[data-place-filter]').forEach(x=>x.classList.toggle('is-active',x===b));renderPlaces()});
  $('#planner-search').addEventListener('input',e=>{placeQuery=e.target.value.trim().toLowerCase();renderPlaces()});
  $('#planner-export').onclick=exportPDF;
- initPlannerMap();update();
+ const workspace=$('.planner-workspace'),picker=$('.planner-select-section');
+ if(workspace&&picker){workspace.prepend(picker);workspace.classList.add('planner-v7-workbench');
+  const pickerSummary=document.createElement('div');pickerSummary.id='v7-picker-summary';pickerSummary.className='v7-picker-summary';picker.querySelector('.planner-place-title')?.after(pickerSummary);
+  const smart=document.createElement('button');smart.type='button';smart.id='v7-smart-plan';smart.className='v7-smart-plan';smart.innerHTML='✦ Подобрать точки автоматически';
+  smart.onclick=suggestSmartPlan;picker.querySelector('.planner-search-wrap')?.after(smart);
+ }
+ const modal=$('#place-detail-dialog');modal?.addEventListener('click',e=>{if(e.target===modal)modal.close()});
+ window.TasteExplorer={showPlace,addPlaceToDay,chooseDay:(i)=>{state.selectedDay=Math.min(Math.max(0,i),state.days-1);update();},goPlanner:()=>$('#planner')?.scrollIntoView({behavior:'smooth',block:'start'}),setTourStops:(ids)=>{state.plans[state.selectedDay]=ids.filter(id=>byId[id]);update();toast('Маршрут тура добавлен в выбранный день');}};
+ initPlannerMap();update();setTimeout(()=>map?.invalidateSize(),420);
 }
 // PDF создаётся непосредственно из canvas: по одной странице A4 на день.
 function makePdfPage(dayIndex,ids){

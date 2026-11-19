@@ -13,12 +13,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/v7.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
   <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
   <script src="js/app.js?v=5" defer></script>
   <script src="js/souvenir.js" defer></script>
   <script src="js/explorer.js" defer></script>
+  <script src="js/v7.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -30,7 +32,7 @@
         <span class="brand-title">Вкусный<span>Ташкент</span></span>
       </a>
       <nav id="navigation" class="nav" aria-label="Основная навигация">
-        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#map-section">Карта</a><a href="#planner">Мой маршрут</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
+        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#immersive">Живой Ташкент ✦</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
         <a href="#quiz" class="mobile-nav-cta">Подобрать тур <span aria-hidden="true">↗</span></a>
       </nav>
       <a class="nav-cta" href="#studio">Создать сувенир <span aria-hidden="true">↗</span></a>
@@ -45,7 +47,7 @@
           <div class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> Гастрономический путеводитель по Ташкенту</div>
           <h1 id="hero-title">Ташкент.<br><em>На вкус</em><span class="headline-dot">.</span></h1>
           <p class="hero-lead">За ароматом самсы — на Чорсу. За пловом — к огромным казанам. За впечатлениями — в город, где за столом всегда найдётся место для гостя.</p>
-          <div class="hero-actions"><a href="#tours" class="button button-sun">Исследовать маршруты <span aria-hidden="true">↗</span></a><a href="#map-section" class="text-link light-link"><span class="round-arrow" aria-hidden="true">↗</span> Карта и навигация</a></div>
+          <div class="hero-actions"><a href="#tours" class="button button-sun">Исследовать маршруты <span aria-hidden="true">↗</span></a><a href="#planner" class="text-link light-link"><span class="round-arrow" aria-hidden="true">↗</span> Карта и навигация</a></div>
           <div class="hero-bottom"><div class="hero-small-stamp">TASTE<br>THE<br>CITY <span>✳</span></div><div><strong>6 маршрутов</strong><br><span>и бесконечно много вкусов</span></div></div>
         </div>
         <div class="hero-art">
@@ -84,7 +86,7 @@
 
     <section class="quote-band"><div class="container quote-content"><span class="quote-spark">✳</span><p>«В Узбекистане знакомство<br>начинается с <em>чашки чая.</em>»</p><span class="quote-uz">MEHMON — AZIZ<br><small>ГОСТЬ — ДОРОГ</small></span></div></section>
 
-    <section id="map-section" class="section map-section">
+    <section id="map-section" hidden aria-hidden="true" class="section map-section">
       <div class="container"><div class="section-head reveal"><div><div class="eyebrow">03 / БЫСТРЫЕ МАРШРУТЫ</div><h2 class="section-heading">Город на<br><em>ладони.</em></h2></div><p>Шесть готовых гастропрогулок на несколько часов. Для путешествия на несколько дней используй конструктор ниже — добавляй любые точки и строй навигацию.</p></div>
         <div class="map-layout reveal">
           <div class="map-side"><div class="map-side-top"><span class="side-issue">01 — 06 / МАРШРУТЫ</span><h3>Выбери прогулку</h3><label class="visually-hidden" for="map-route-select">Маршрут на карте</label><select id="map-route-select" aria-label="Маршрут на карте"></select></div><div id="map-steps" class="map-steps" aria-live="polite"></div><div class="map-side-bottom"><p>Это короткие тематические прогулки. Нужно больше мест и дней? <a href="#planner" style="text-decoration:underline;color:#096963">Собери собственную поездку ↗</a></p><button id="download-route" class="button button-dark" type="button">Скачать PDF <span aria-hidden="true">↓</span></button></div></div>
@@ -101,15 +103,24 @@
     </section>
 
 
+
+<section id="immersive" class="v7-immersive" aria-labelledby="immersive-heading">
+ <div class="v7-immersive-noise" aria-hidden="true"></div>
+ <div class="container v7-immersive-layout">
+  <div class="v7-immersive-text"><div class="v7-immersive-eyebrow"><span class="v7-live-pulse"></span> ПОЧУВСТВУЙ ГОРОД</div><h2 id="immersive-heading">Ташкент,<br><em>который оживает.</em></h2><p>Не просто фотографии. Открой четыре настроения города: шум базара, жар казана, узорные дворики и огни вечерних фонтанов.</p><div class="v7-immersive-actions"><button type="button" id="v7-experience-open" class="v7-immersive-start">Погрузиться в атмосферу <span>↗</span></button><span class="v7-immersive-note">4 сцены · движение · маленькие истории</span></div></div>
+  <button type="button" id="v7-experience-preview" class="v7-experience-preview" aria-label="Открыть интерактивную сцену Ташкента"><img src="assets/places/city.webp" alt="Вечерний Ташкент с огнями фонтанов"><div class="v7-experience-glow"></div><span class="v7-experience-orbit" aria-hidden="true"></span><span class="v7-experience-play">✦</span><span class="v7-experience-photo-caption">TOSHKENT AFTERGLOW <small>Открой меня ↗</small></span></button>
+ </div>
+</section>
+
     <section id="planner" class="section planner-section" aria-labelledby="planner-title">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">04 / ТВОЙ МАРШРУТ</div><h2 class="section-heading" id="planner-title">Собери поездку<br><em>под себя.</em></h2></div><p>Один день или целая неделя вкусов? Выбери, что хочешь увидеть, распредели остановки по дням и открой настоящую навигацию. Всё можно изменить.</p></div>
-        <div class="planner-lead reveal"><div><span class="planner-mini-label">✳ ПУТЕВОДИТЕЛЬ ПО ТАШКЕНТУ</span><h3>От первого «попробую»<br>до собственного маршрута.</h3><p>Готовые планы на 1–5 дней, 17 реальных мест и возможность составить свою программу без регистрации.</p></div><div class="planner-stats"><b>01—05</b><span>дней путешествия</span><b>17</b><span>проверенных точек</span></div><div class="planner-lead-art" aria-hidden="true">✳<span>YAXSHI<br>ISHTAHA</span></div></div>
+        <div class="section-head reveal"><div><div class="eyebrow">04 / ТВОЙ МАРШРУТ</div><h2 class="section-heading" id="planner-title">Собери поездку<br><em>под себя.</em></h2></div><p>Выбирай места прямо рядом с картой: одно нажатие добавляет остановку в нужный день. Открой советы о месте, поменяй порядок и проложи путь.</p></div>
+        <div class="planner-lead reveal"><div><span class="planner-mini-label">✳ ПУТЕВОДИТЕЛЬ ПО ТАШКЕНТУ</span><h3>От первого «попробую»<br>до собственного маршрута.</h3><p>Готовые планы на 1–5 дней, 17 реальных мест и возможность составить свою программу без регистрации.</p></div><div class="planner-stats"><b>01—05</b><span>дней путешествия</span><b>17</b><span>городских точек</span></div><div class="planner-lead-art" aria-hidden="true">✳<span>YAXSHI<br>ISHTAHA</span></div></div>
         <div class="planner-controls reveal"><div class="planner-control"><label for="planner-day-count">Продолжительность</label><select id="planner-day-count"><option value="1">1 день</option><option value="2">2 дня</option><option value="3">3 дня</option><option value="4">4 дня</option><option value="5">5 дней</option></select></div><div class="planner-control"><label for="planner-transport">Навигация</label><select id="planner-transport"><option value="walking">Пешком</option><option value="driving">На автомобиле</option></select></div><div class="planner-control planner-origin-control"><label for="planner-origin">Откуда начинаешь? <span>(необязательно)</span></label><input id="planner-origin" type="text" placeholder="Например, название отеля" autocomplete="off" maxlength="140"></div><button id="planner-reset" class="planner-reset" type="button">↻ Вернуть готовый план</button><span id="planner-total" class="planner-sum">0 остановок</span></div>
         <div id="planner-days" class="planner-days" aria-label="Выбор дня"></div>
         <div class="planner-workspace reveal"><div class="planner-sidebar"><div class="planner-sidebar-title"><div><small>МАРШРУТ ДНЯ</small><h3 id="planner-current-title">Старый город и плов</h3></div><span class="planner-glyph">✿</span></div><div id="planner-itinerary" class="planner-itinerary" aria-live="polite"></div><div class="planner-sidebar-footer"><button id="planner-optimize" type="button" class="planner-text-action">✳ Упорядочить по близости</button><button id="planner-clear-day" type="button" class="planner-text-action">Очистить день</button></div><p class="planner-disclaimer">Порядок рассчитывается приблизительно по расстоянию. Реальные повороты, транспорт и время поездки смотри в навигаторе.</p></div><div class="planner-map-column"><div class="planner-map-head"><span><i></i> ИНТЕРАКТИВНАЯ КАРТА / TOSHKENT</span><button id="planner-map-toggle" type="button">Спутник ↗</button><button id="planner-map-fit" type="button">Показать всё ⤢</button></div><div id="planner-map" class="planner-map" aria-label="Карта выбранных остановок"></div><div class="planner-map-toolbar"><span id="planner-map-status">Загрузка карты…</span><a id="planner-navigate" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/">Проложить путь в Google Картах ↗</a></div><div id="planner-nav-extras" class="planner-nav-extras" hidden></div><div id="place-spotlight" class="place-spotlight" hidden></div></div></div>
         <div class="planner-export-bar"><div><span class="eyebrow">ГОТОВО К ПРОГУЛКЕ</span><strong>Твой маршрут всегда под рукой.</strong><small>Навигация для каждого дня + красивый PDF со всеми остановками.</small></div><button id="planner-export" class="button button-sun" type="button">Скачать мой путеводитель (PDF) ↓</button></div>
-        <div class="planner-select-section"><div class="planner-place-title"><div><span class="eyebrow">ВЫБИРАЙ САМ</span><h3>Куда отправимся?</h3><p>Нажимай «Добавить», чтобы включить место в выбранный день. Можно менять последовательность и переносить остановки.</p></div><div class="planner-search-wrap"><label class="visually-hidden" for="planner-search">Найти место</label><input type="search" id="planner-search" placeholder="Поиск: плов, музей, рынок…" autocomplete="off"><span id="planner-place-count">17 локаций</span></div></div><div id="planner-filters" class="planner-filters"></div><div id="planner-place-grid" class="planner-place-grid"></div></div>
+        <div class="planner-select-section"><div class="planner-place-title"><div><span class="eyebrow">ВЫБИРАЙ САМ</span><h3>Куда отправимся?</h3><p>Нажми «+», чтобы добавить место в выбранный день. По фотографии или названию открывается подробный гид.</p></div><div class="planner-search-wrap"><label class="visually-hidden" for="planner-search">Найти место</label><input type="search" id="planner-search" placeholder="Поиск: плов, музей, рынок…" autocomplete="off"><span id="planner-place-count">17 локаций</span></div></div><div id="planner-filters" class="planner-filters"></div><div id="planner-place-grid" class="planner-place-grid"></div></div>
       </div>
     </section>
 
@@ -141,9 +152,20 @@
 
     <section class="closing-section"><div class="closing-texture"></div><div class="container closing-grid"><div><div class="eyebrow">YAXSHI ISHTAHA!</div><h2>Ну что,<br><em>поедим?</em></h2><p>Каждый большой маршрут начинается с одного маленького «попробую».</p><a href="#tours" class="button button-cream">Выбрать приключение <span aria-hidden="true">↗</span></a></div><div class="closing-plate" aria-hidden="true"><img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация плова"></div></div></section>
   </main>
-  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#map-section">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="tour-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+
+<dialog id="v7-experience-dialog" class="v7-experience-dialog" aria-label="Интерактивный гастрономический тур по Ташкенту">
+ <div id="v7-experience-stage" class="v7-experience-stage"><div id="v7-experience-image" class="v7-experience-image"></div><div class="v7-experience-tint"></div>
+ <button id="v7-experience-close" class="v7-experience-close" type="button" aria-label="Закрыть">✕ Закрыть</button>
+ <div class="v7-experience-progress" id="v7-experience-progress" aria-label="Этапы путешествия"></div>
+ <div class="v7-story-content"><div class="v7-story-label"><span class="v7-live-pulse"></span> ВКУСНЫЙ ТАШКЕНТ · ЖИВАЯ ИСТОРИЯ</div><div id="v7-story-number" class="v7-story-number">01 / 04</div><h2 id="v7-story-title">Чорсу</h2><p id="v7-story-desc"></p><div class="v7-story-tip" id="v7-story-tip"></div><div class="v7-story-actions"><button type="button" id="v7-story-place" class="v7-immersive-start">Исследовать место ↗</button><button type="button" id="v7-story-next" class="v7-story-next">Следующая история →</button></div></div>
+ <div class="v7-story-footnote">Интерактивная художественная сцена · не VR и не прямая видеотрансляция</div>
+ </div>
+</dialog>
+
+  <dialog id="place-detail-dialog" class="place-detail-dialog" aria-label="Информация о месте"></dialog>
   <dialog id="food-library-dialog" class="food-library-dialog" aria-label="Большой путеводитель по узбекской кухне"><div class="food-library-shell"><div class="food-library-header"><div><span class="eyebrow">УЗБЕКСКАЯ ГАСТРОЭНЦИКЛОПЕДИЯ</span><h2>Кухня, которую<br><em>хочется исследовать.</em></h2><p>19 блюд · Состав, подача, традиции и советы для путешествия.</p></div><button id="close-food-library" type="button" aria-label="Закрыть путеводитель">×</button></div><div class="food-library-tools"><input type="search" id="food-library-search" placeholder="Найти блюдо…" aria-label="Поиск по блюдам"><div id="food-library-filters" class="food-library-filters"></div></div><div class="food-library-body"><div id="food-library-list" class="food-library-list"></div><div id="food-library-detail" class="food-library-detail" aria-live="polite"></div></div></div></dialog>
   <dialog id="dish-dialog" class="dish-dialog" aria-labelledby="dish-dialog-title"><div id="dish-dialog-content"></div></dialog>
   <button class="back-to-top" type="button" id="to-top" aria-label="Вернуться наверх">↑</button>
