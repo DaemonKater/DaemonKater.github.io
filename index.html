@@ -14,13 +14,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/v7.css">
+  <link rel="stylesheet" href="css/cinema-v8.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
   <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
   <script src="js/app.js?v=5" defer></script>
   <script src="js/souvenir.js" defer></script>
   <script src="js/explorer.js" defer></script>
-  <script src="js/v7.js" defer></script>
+  <script src="js/cinema-v8.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -104,12 +105,28 @@
 
 
 
-<section id="immersive" class="v7-immersive" aria-labelledby="immersive-heading">
- <div class="v7-immersive-noise" aria-hidden="true"></div>
- <div class="container v7-immersive-layout">
-  <div class="v7-immersive-text"><div class="v7-immersive-eyebrow"><span class="v7-live-pulse"></span> ПОЧУВСТВУЙ ГОРОД</div><h2 id="immersive-heading">Ташкент,<br><em>который оживает.</em></h2><p>Не просто фотографии. Открой четыре настроения города: шум базара, жар казана, узорные дворики и огни вечерних фонтанов.</p><div class="v7-immersive-actions"><button type="button" id="v7-experience-open" class="v7-immersive-start">Погрузиться в атмосферу <span>↗</span></button><span class="v7-immersive-note">4 сцены · движение · маленькие истории</span></div></div>
-  <button type="button" id="v7-experience-preview" class="v7-experience-preview" aria-label="Открыть интерактивную сцену Ташкента"><img src="assets/places/city.webp" alt="Вечерний Ташкент с огнями фонтанов"><div class="v7-experience-glow"></div><span class="v7-experience-orbit" aria-hidden="true"></span><span class="v7-experience-play">✦</span><span class="v7-experience-photo-caption">TOSHKENT AFTERGLOW <small>Открой меня ↗</small></span></button>
- </div>
+<section id="immersive" class="cinema-section" aria-labelledby="immersive-heading">
+  <div class="cinema-section-glow" aria-hidden="true"></div>
+  <div class="container cinema-intro">
+    <div class="cinema-kicker"><span class="cinema-signal"></span> THE SPIRIT OF TASHKENT <span class="cinema-sep">/</span> ИНТЕРАКТИВНОЕ ПУТЕШЕСТВИЕ</div>
+    <h2 id="immersive-heading">Не смотри на Ташкент.<br><em>Окажись внутри.</em></h2>
+    <p>Город можно увидеть на карте. А можно почувствовать: заглянуть под купол Чорсу, оказаться у огромного казана и пройти сквозь огни вечерней столицы.</p>
+  </div>
+  <div class="cinema-banner" id="cinema-banner">
+    <div class="cinema-banner-image" aria-hidden="true"></div><div class="cinema-banner-shadow" aria-hidden="true"></div>
+    <div class="cinema-stars" aria-hidden="true"></div>
+    <div class="cinema-banner-border" aria-hidden="true"><span>✺</span><span>✺</span><span>✺</span></div>
+    <div class="cinema-banner-content">
+      <div class="cinema-chapter-caption">✦ ГЛАВА ПЕРВАЯ / ГОРОД ПРОБУЖДАЕТСЯ</div>
+      <div class="cinema-banner-head">ТАШКЕНТ<span>LIVE</span></div>
+      <p>Пять эпизодов. Одна история. Город, которым можно управлять.</p>
+      <button type="button" class="cinema-primary cinema-enter" id="v7-experience-open"><span class="cinema-play-icon">▶</span><span>ВОЙТИ В ИСТОРИЮ<small>полный экран · интерактивные сцены</small></span><span class="cinema-cta-arrow">↗</span></button>
+      <div class="cinema-banner-hint">✥ ДВИГАЙ КУРСОР ИЛИ ПАЛЕЦ · ИССЛЕДУЙ ЛОКАЦИИ</div>
+    </div>
+    <div class="cinema-banner-right"><div class="cinema-artifact">✳<span>41°19′ N<br>69°14′ E</span></div><div class="cinema-gate"><div class="cinema-gate-inner">✶<small>ВОЙТИ<br>В ГОРОД</small></div></div><span class="cinema-orbit-label">YURAKDAN · FROM THE HEART</span></div>
+    <div class="cinema-banner-bottom"><div class="cinema-showline"><span><b>01</b> БАЗАР</span><i></i><span><b>02</b> ПЛОВ</span><i></i><span><b>03</b> УЗОРЫ</span><i></i><span><b>04</b> ОГНИ</span></div><button id="v7-experience-preview" type="button" class="cinema-explore-quick">ЗАГЛЯНУТЬ В ПОРТАЛ ↗</button></div>
+  </div>
+  <div class="container cinema-bottom-caption"><span>✶ 5 КИНЕМАТОГРАФИЧНЫХ ГЛАВ</span><span>✶ ЖИВЫЕ ТОЧКИ И ПОДСКАЗКИ</span><span>✶ СУМЕРКИ / НОЧЬ</span><span>✶ ДОБАВЛЯЙ МЕСТА В МАРШРУТ</span></div>
 </section>
 
     <section id="planner" class="section planner-section" aria-labelledby="planner-title">
@@ -152,17 +169,23 @@
 
     <section class="closing-section"><div class="closing-texture"></div><div class="container closing-grid"><div><div class="eyebrow">YAXSHI ISHTAHA!</div><h2>Ну что,<br><em>поедим?</em></h2><p>Каждый большой маршрут начинается с одного маленького «попробую».</p><a href="#tours" class="button button-cream">Выбрать приключение <span aria-hidden="true">↗</span></a></div><div class="closing-plate" aria-hidden="true"><img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация плова"></div></div></section>
   </main>
-  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации, в том числе сцены интерактивного путешествия. Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="tour-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
 
-<dialog id="v7-experience-dialog" class="v7-experience-dialog" aria-label="Интерактивный гастрономический тур по Ташкенту">
- <div id="v7-experience-stage" class="v7-experience-stage"><div id="v7-experience-image" class="v7-experience-image"></div><div class="v7-experience-tint"></div>
- <button id="v7-experience-close" class="v7-experience-close" type="button" aria-label="Закрыть">✕ Закрыть</button>
- <div class="v7-experience-progress" id="v7-experience-progress" aria-label="Этапы путешествия"></div>
- <div class="v7-story-content"><div class="v7-story-label"><span class="v7-live-pulse"></span> ВКУСНЫЙ ТАШКЕНТ · ЖИВАЯ ИСТОРИЯ</div><div id="v7-story-number" class="v7-story-number">01 / 04</div><h2 id="v7-story-title">Чорсу</h2><p id="v7-story-desc"></p><div class="v7-story-tip" id="v7-story-tip"></div><div class="v7-story-actions"><button type="button" id="v7-story-place" class="v7-immersive-start">Исследовать место ↗</button><button type="button" id="v7-story-next" class="v7-story-next">Следующая история →</button></div></div>
- <div class="v7-story-footnote">Интерактивная художественная сцена · не VR и не прямая видеотрансляция</div>
- </div>
+<dialog id="v7-experience-dialog" class="v7-experience-dialog cinema-dialog" aria-label="Живой Ташкент — интерактивное путешествие">
+  <div class="cinema-stage" id="v7-experience-stage">
+    <div class="cinema-photo" id="v7-experience-image" aria-hidden="true"></div><div class="cinema-photo cinema-photo-cross" id="cinema-photo-cross" aria-hidden="true"></div>
+    <div class="cinema-sky-shimmer" aria-hidden="true"></div><div class="cinema-fog cinema-fog-a" aria-hidden="true"></div><div class="cinema-fog cinema-fog-b" aria-hidden="true"></div><div class="cinema-vignette" aria-hidden="true"></div>
+    <div class="cinema-particles" id="cinema-particles" aria-hidden="true"></div>
+    <header class="cinema-hud-top"><div class="cinema-hud-brand"><span class="cinema-crest">✺</span><div><strong>ВКУСНЫЙ<br>ТАШКЕНТ</strong><small>THE CITY EXPERIENCE</small></div></div><div class="cinema-hud-right"><span class="cinema-hud-live"><i></i> LIVE EXPERIENCE</span><button id="cinema-night" class="cinema-hud-button" aria-pressed="false" type="button">☾ НОЧЬ</button><button id="cinema-auto" class="cinema-hud-button" aria-pressed="false" type="button">▷ АВТОТУР</button><button id="v7-experience-close" class="cinema-hud-close" type="button" aria-label="Закрыть впечатление">✕ <span>ВЫХОД</span></button></div></header>
+    <div class="cinema-hud-left"><div class="cinema-episode-line"><span id="v7-story-number">01 / 05</span><span class="cinema-hud-rule"></span><span id="cinema-episode-kind">ПРОЛОГ / ЗНАКОМСТВО</span></div><div class="cinema-story-heading" id="v7-story-title">ТАШКЕНТ,<br>ТЫ ПРЕКРАСЕН.</div><p id="v7-story-desc" class="cinema-story-desc">Город встречает ароматами, светом и гостеприимством.</p><div class="cinema-story-mini" id="v7-story-tip">✳ Выбирай сияющие точки на экране, чтобы узнать больше.</div><div class="cinema-story-cta"><button id="v7-story-place" class="cinema-main-btn" type="button">УЗНАТЬ О МЕСТЕ ↗</button><button id="cinema-add" class="cinema-add-btn" type="button">+ В МОЙ МАРШРУТ</button></div></div>
+    <div id="cinema-hotspots" class="cinema-hotspots" aria-label="Интерактивные точки на изображении"></div>
+    <aside class="cinema-discovery" id="cinema-discovery" aria-live="polite"><div class="cinema-discovery-line"><span>✳ ТЫ НАШЁЛ МЕСТО</span><span id="cinema-discovery-count">01 / 03</span></div><h3 id="cinema-discovery-title">Базар Чорсу</h3><p id="cinema-discovery-desc"></p><div class="cinema-discovery-bottom"><span id="cinema-discovery-taste"></span><button id="cinema-discovery-add" type="button">Добавить ↗</button></div></aside>
+    <div class="cinema-swipe-note">↔ <span>ПЕРЕТАСКИВАЙ ПЕЙЗАЖ · НАЖИМАЙ НА МЕТКИ</span></div>
+    <div class="cinema-chapters"><div class="cinema-chapters-label"><span>ПУТЕШЕСТВИЕ В ПЯТИ ГЛАВАХ</span><button id="v7-story-next" type="button">СЛЕДУЮЩАЯ ГЛАВА →</button></div><div class="cinema-chapter-list" id="v7-experience-progress"></div></div>
+    <div class="cinema-story-footnote">Художественная интерактивная реконструкция · изображения не являются панорамной съёмкой или прямой трансляцией</div>
+  </div>
 </dialog>
 
   <dialog id="place-detail-dialog" class="place-detail-dialog" aria-label="Информация о месте"></dialog>
