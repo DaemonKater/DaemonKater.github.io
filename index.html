@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/v7.css">
   <link rel="stylesheet" href="css/immersive-v9.css">
+  <link rel="stylesheet" href="css/ready-tours.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
   <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
@@ -22,6 +23,7 @@
   <script src="js/souvenir.js" defer></script>
   <script src="js/explorer.js" defer></script>
   <script src="js/immersive-v9.js" defer></script>
+  <script src="js/ready-tours.js" defer></script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>>
 </head>
 <body>
@@ -34,7 +36,7 @@
         <span class="brand-title">Вкусный<span>Ташкент</span></span>
       </a>
       <nav id="navigation" class="nav" aria-label="Основная навигация">
-        <a href="#about">О проекте</a><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#immersive">Ташкент 360° ✦</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
+        <a href="#about">О проекте</a><a href="#tours">Короткие туры</a><a href="#ready-tours">Готовые 3–5 дней</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#immersive">Ташкент 360° ✦</a><a href="#flavors">Кухня</a><a href="#studio">Сувенирная</a>
         <a href="#quiz" class="mobile-nav-cta">Подобрать тур <span aria-hidden="true">↗</span></a>
       </nav>
       <a class="nav-cta" href="#studio">Создать сувенир <span aria-hidden="true">↗</span></a>
@@ -83,6 +85,41 @@
         <div id="tour-filters" class="filters" role="group" aria-label="Фильтр маршрутов"><button class="filter is-active" data-filter="all" aria-pressed="true">Все маршруты <span>06</span></button><button class="filter" data-filter="classic" aria-pressed="false">Традиции</button><button class="filter" data-filter="street" aria-pressed="false">Стритфуд</button><button class="filter" data-filter="sweet" aria-pressed="false">Сладости</button><button class="filter" data-filter="evening" aria-pressed="false">Вечер</button></div>
         <div id="tour-grid" class="tour-grid" aria-live="polite"></div>
         <p class="small-note"><span aria-hidden="true">✳</span> Это авторские идеи самостоятельных прогулок, а не коммерческие экскурсии. Время примерное; расходы на еду и проезд не включены.</p>
+      </div>
+    </section>
+
+
+    <section id="ready-tours" class="section rt-section" aria-labelledby="rt-main-title">
+      <div class="container">
+        <header class="rt-header reveal"><div><span class="rt-eyebrow">03 / ГОТОВЫЕ ПРОГРАММЫ ПУТЕШЕСТВИЙ</span><h2 id="rt-main-title">Готовые маршруты<br><em>без лишних хлопот.</em></h2></div><p>Три продуманных сценария на 3, 4 или 5 дней. По часам расписано, куда идти, что посмотреть и попробовать. Внизу — честная смета на компанию и готовый PDF с навигацией.</p></header>
+        <div id="rt-switcher" class="rt-switcher" role="group" aria-label="Выбор продолжительности готового тура">
+          <button type="button" class="is-active" data-rt-length="3" aria-pressed="true"><b>03</b> дня</button>
+          <button type="button" data-rt-length="4" aria-pressed="false"><b>04</b> дня</button>
+          <button type="button" data-rt-length="5" aria-pressed="false"><b>05</b> дней</button>
+        </div>
+        <div class="rt-card reveal">
+          <div class="rt-main">
+            <div class="rt-overview"><div><small>ГОТОВАЯ ПРОГРАММА • ВЫБЕРИ И ОТПРАВЛЯЙСЯ</small><h3 id="rt-title">Три вкуса Ташкента</h3><strong id="rt-tagline">Самое важное без спешки</strong><p id="rt-description">Старый город, большой плов и культурные открытия.</p></div><span class="rt-overview-stamp" aria-hidden="true">✳</span></div>
+            <div id="rt-day-nav" class="rt-day-nav" role="group" aria-label="Дни готовой программы"></div>
+            <div class="rt-day-top"><img id="rt-day-cover" src="assets/places/chorsu.webp" alt="Базар Чорсу" loading="lazy"><div><span id="rt-day-kicker">ДЕНЬ 1 / 3</span><h4 id="rt-day-title">Сердце старого Ташкента</h4><p id="rt-day-subtitle">История, тандыр и рынок Чорсу</p><q id="rt-day-highlight">Самса, нон и базар</q></div></div>
+            <div id="rt-timeline" class="rt-timeline" aria-live="polite"></div>
+            <div class="rt-day-footer"><a id="rt-google-day" class="rt-google-day" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/"><span>🧭</span> Построить путь этого дня в Google Картах ↗</a></div>
+          </div>
+          <aside class="rt-aside" aria-label="Расчёт примерного бюджета поездки">
+            <div class="rt-eyebrow">СМЕТА БЕЗ СЮРПРИЗОВ</div><h4>Сколько стоит?</h4><p>Выбери число путешественников и нужны ли трансферы. Все выбранные поездки автоматически входят в итоговую оценку.</p>
+            <div class="rt-field"><label for="rt-group">Путешественников</label><select id="rt-group"><option value="1">1 человек</option><option value="2" selected>2 человека</option><option value="3">3 человека</option><option value="4">4 человека</option><option value="5">5 человек</option><option value="6">6 человек</option><option value="7">7 человек</option><option value="8">8 человек</option></select></div>
+            <div class="rt-field"><label for="rt-arrival">Встреча по прибытии</label><select id="rt-arrival"><option value="none">Не нужна — доберёмся сами</option><option value="airport">Из аэропорта Ташкента</option><option value="rail">С железнодорожного вокзала</option></select></div>
+            <div class="rt-field"><label for="rt-departure">Трансфер при отъезде</label><select id="rt-departure"><option value="none">Не нужен</option><option value="airport">В аэропорт Ташкента</option><option value="rail">На железнодорожный вокзал</option></select></div>
+            <div class="rt-price-box"><span class="rt-price-label">ВСЯ КОМПАНИЯ · ИТОГО</span><strong id="rt-total">—</strong><div class="rt-price-per"><span class="rt-price-label">НА ОДНОГО ЧЕЛОВЕКА</span><strong id="rt-perperson">—</strong></div></div>
+            <div class="rt-breakdown"><h5>Как складывается стоимость</h5><div class="rt-cost-row"><span>Еда и дегустации</span><b id="rt-food-cost">—</b></div><div class="rt-cost-row"><span>Ориентир по билетам</span><b id="rt-tickets-cost">—</b></div><div class="rt-cost-row"><span>Такси внутри города</span><b id="rt-local-cost">—</b></div><div class="rt-cost-row"><span>Выбранные трансферы</span><b id="rt-transfer-cost">—</b></div></div>
+            <p class="rt-smallprint" id="rt-price-breakdown">Расчёт на группу</p>
+            <p class="rt-smallprint" id="rt-included-description">Включены основные расходы.</p>
+            <button type="button" id="rt-download" class="rt-dl">✦ Скачать красивый маршрут в PDF ↓</button>
+            <button type="button" id="rt-open-planner" class="rt-open-planner">Изменить этот план в конструкторе ↗</button>
+            <p class="rt-smallprint">Это <b>примерный бюджет самостоятельной поездки</b>, а не подтверждённая стоимость тура. Трансфер заложен в расчёт, если выбран, но фактически не заказан. Отель, билеты в Ташкент и услуги гида не включены. Время, меню, доступность музеев и цены уточняй перед посещением.</p>
+          </aside>
+        </div>
+        <p class="rt-sources">Ориентиры расходов сопоставлены с обзорами цен за 2026 год: <a href="https://toureast.uz/en/blog/uzbekistan-travel-cost" target="_blank" rel="noopener noreferrer">TourEast</a> и <a href="https://oxusroad.com/en/travel-guide/trip-cost/" target="_blank" rel="noopener noreferrer">Oxus Road</a>. Программа построена вокруг существующих мест и предполагает самостоятельное посещение; фактические транспортные тарифы и входные билеты могут отличаться. Ссылки Google Карт открываются отдельно для каждого дня.</p>
       </div>
     </section>
 
@@ -181,7 +218,7 @@
 
     <section class="closing-section"><div class="closing-texture"></div><div class="container closing-grid"><div><div class="eyebrow">YAXSHI ISHTAHA!</div><h2>Ну что,<br><em>поедим?</em></h2><p>Каждый большой маршрут начинается с одного маленького «попробую».</p><a href="#tours" class="button button-cream">Выбрать приключение <span aria-hidden="true">↗</span></a></div><div class="closing-plate" aria-hidden="true"><img src="assets/photos/plov.webp" alt="Фотографическая иллюстрация плова"></div></div></section>
   </main>
-  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Маршруты</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Видео на первом экране иммерсивного раздела — художественный анимированный монтаж из иллюстраций. Отдельно доступно реальное видео базара (Lokk1y, Wikimedia Commons, CC BY-SA 4.0) и реальные панорамы 360° Музея истории Узбекистана (Aleksey Chalabyan / Xelgen, Wikimedia Commons, CC BY-SA 4.0). Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
+  <footer class="footer"><div class="container"><div class="footer-top"><a href="#top" class="brand footer-brand"><span class="brand-symbol">✳</span><span class="brand-title">Вкусный<span>Ташкент</span></span></a><div><p>Гастрономический путеводитель.<br>Сделано с любовью к Ташкенту и его кухне.</p></div><div class="footer-links"><a href="#tours">Короткие туры</a><a href="#ready-tours">Готовые 3–5 дней</a><a href="#planner">Карта</a><a href="#planner">Мой маршрут</a><a href="#dastarkhan">Дастархан</a><a href="#studio">Создать сувенир</a><a href="#quiz">Подобрать тур</a><a href="#top">Наверх ↑</a></div></div><div class="footer-bottom"><span>© 2026 Вкусный Ташкент. Сделано с любовью к городу.</span><button type="button" id="credits-toggle" aria-expanded="false">Источники и фотографии ＋</button></div><div id="credits" class="credits" hidden><p>Фотографические изображения блюд, базара и городских прогулок — специально созданные художественные иллюстрации. Видео на первом экране иммерсивного раздела — художественный анимированный монтаж из иллюстраций. Отдельно доступно реальное видео базара (Lokk1y, Wikimedia Commons, CC BY-SA 4.0) и реальные панорамы 360° Музея истории Узбекистана (Aleksey Chalabyan / Xelgen, Wikimedia Commons, CC BY-SA 4.0). Они передают атмосферу Ташкента, но не являются документальными фотографиями конкретных мест. Данные об ориентировочных гастромаршрутах: <a href="https://uzbekistan.travel/en/o/gastro-symbols-of-chorsu-bazaar/" target="_blank" rel="noopener noreferrer">Uzbekistan Travel</a>. Картографические данные: © участники <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; картографические подложки © OpenStreetMap и Esri. Подробная навигация открывается в Google Картах.</p><p>Маршруты — рекомендации для самостоятельных прогулок, не продажа экскурсий. Часы работы и доступность заведений уточняются перед посещением.</p></div></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="tour-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
 
