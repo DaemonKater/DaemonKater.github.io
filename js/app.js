@@ -228,7 +228,7 @@ function renderTourPDFPage(t){
  c.fillStyle=teal;c.font='700 19px Manrope, sans-serif';c.fillText('ВКУСНЫЙ ТАШКЕНТ • ГОРОД, КОТОРЫЙ ХОЧЕТСЯ ПОПРОБОВАТЬ',86,1707);
  return canvas;
 }
-function canvasWrapText(c,text,x,y,width,lineHeight,maxLines=99){
+function canvasWrapText(c,text,x,y,width,lineHeight,maxLines=99){text=window.TasteI18n?.t(String(text))||String(text);
  const words=text.split(/\s+/);let line='',lines=0;
  for(const word of words){const next=line?line+' '+word:word;
   if(c.measureText(next).width>width&&line){c.fillText(line,x,y);y+=lineHeight;lines++;line=word;if(lines>=maxLines-1)break}else line=next;

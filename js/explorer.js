@@ -237,7 +237,7 @@ function makePdfPage(dayIndex,ids){
  c.fillStyle='#6f7c74';c.font='17px Manrope';c.fillText('План справочный. Проверяй часы работы, доступность и транспорт.',73,1248);
  return canvas;
 }
-function wrapCanvas(c,s,x,y,w,h,max){let line='',n=0;for(const word of s.split(' ')){const next=line?line+' '+word:word;if(c.measureText(next).width>w&&line){c.fillText(line,x,y);line=word;y+=h;n++;if(n>=max-1)break}else line=next}if(line)c.fillText(line,x,y)}
+function wrapCanvas(c,s,x,y,w,h,max){s=window.TasteI18n?.t(String(s))||String(s);let line='',n=0;for(const word of s.split(' ')){const next=line?line+' '+word:word;if(c.measureText(next).width>w&&line){c.fillText(line,x,y);line=word;y+=h;n++;if(n>=max-1)break}else line=next}if(line)c.fillText(line,x,y)}
 function pdfMulti(pages){
  const enc=new TextEncoder(),parts=[],pos=[0];let len=0;const add=x=>{const b=typeof x==='string'?enc.encode(x):x;parts.push(b);len+=b.length};const obj=(n,content)=>{pos[n]=len;add(`${n} 0 obj\n`);if(Array.isArray(content)){content.forEach(add)}else add(content);add('\nendobj\n')};
  add('%PDF-1.4\n');let pnums=pages.map((_,i)=>3+i*4);obj(1,'<< /Type /Catalog /Pages 2 0 R >>');obj(2,`<< /Type /Pages /Kids [${pnums.map(n=>`${n} 0 R`).join(' ')}] /Count ${pages.length} >>`);
