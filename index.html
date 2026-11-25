@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/v7.css">
   <link rel="stylesheet" href="css/immersive-v9.css">
   <link rel="stylesheet" href="css/ready-tours.css">
-  <link rel="stylesheet" href="css/i18n-layout.css?v=12">
+  <link rel="stylesheet" href="css/i18n-layout.css?v=13">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" >
   <!-- Библиотека карты подключается ПЕРЕД основным приложением. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
@@ -24,8 +24,8 @@
   <script src="js/souvenir.js" defer></script>
   <script src="js/explorer.js" defer></script>
   <script src="js/immersive-v9.js" defer></script>
-  <script src="js/ready-tours.js" defer></script>
-  <script src="js/i18n-dictionary.js?v=12" defer></script>
+  <script src="js/ready-tours.js?v=13" defer></script>
+  <script src="js/i18n-dictionary.js?v=13" defer></script>
   <script src="js/i18n.js?v=12" defer></script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 </head>
@@ -114,15 +114,15 @@
             <div class="rt-field"><label for="rt-arrival">Встреча по прибытии</label><select id="rt-arrival"><option value="none">Не нужна — доберёмся сами</option><option value="airport">Из аэропорта Ташкента</option><option value="rail">С железнодорожного вокзала</option></select></div>
             <div class="rt-field"><label for="rt-departure">Трансфер при отъезде</label><select id="rt-departure"><option value="none">Не нужен</option><option value="airport">В аэропорт Ташкента</option><option value="rail">На железнодорожный вокзал</option></select></div>
             <div class="rt-price-box"><span class="rt-price-label">ВСЯ КОМПАНИЯ · ИТОГО</span><strong id="rt-total">—</strong><div class="rt-price-per"><span class="rt-price-label">НА ОДНОГО ЧЕЛОВЕКА</span><strong id="rt-perperson">—</strong></div></div>
-            <div class="rt-breakdown"><h5>Как складывается стоимость</h5><div class="rt-cost-row"><span>Еда и дегустации</span><b id="rt-food-cost">—</b></div><div class="rt-cost-row"><span>Ориентир по билетам</span><b id="rt-tickets-cost">—</b></div><div class="rt-cost-row"><span>Такси внутри города</span><b id="rt-local-cost">—</b></div><div class="rt-cost-row"><span>Выбранные трансферы</span><b id="rt-transfer-cost">—</b></div></div>
+            <div class="rt-breakdown"><h5>Как складывается стоимость</h5><div class="rt-cost-row"><span>Еда и дегустации</span><b id="rt-food-cost">—</b></div><div class="rt-cost-row"><span>Ориентир по билетам</span><b id="rt-tickets-cost">—</b></div><div class="rt-cost-row" id="rt-workshops-row" hidden><span>Три мастер-класса (оценка)</span><b id="rt-workshops-cost">—</b></div><div class="rt-cost-row"><span>Такси внутри города</span><b id="rt-local-cost">—</b></div><div class="rt-cost-row"><span>Выбранные трансферы</span><b id="rt-transfer-cost">—</b></div></div>
             <p class="rt-smallprint" id="rt-price-breakdown">Расчёт на группу</p>
             <p class="rt-smallprint" id="rt-included-description">Включены основные расходы.</p>
             <button type="button" id="rt-download" class="rt-dl">✦ Скачать красивый маршрут в PDF ↓</button>
             <button type="button" id="rt-open-planner" class="rt-open-planner">Изменить этот план в конструкторе ↗</button>
-            <p class="rt-smallprint">Это <b>примерный бюджет самостоятельной поездки</b>, а не подтверждённая стоимость тура. Трансфер заложен в расчёт, если выбран, но фактически не заказан. Отель, билеты в Ташкент и услуги гида не включены. Время, меню, доступность музеев и цены уточняй перед посещением.</p>
+            <p class="rt-smallprint">Это <b>примерный бюджет самостоятельной поездки</b>, в том числе расчётная стоимость мастер-классов, а не подтверждённая стоимость тура. Трансфер заложен в расчёт, если выбран, но фактически не заказан. Отель, билеты в Ташкент и услуги гида не включены. Время, меню, доступность музеев и цены уточняй перед посещением.</p>
           </aside>
         </div>
-        <p class="rt-sources">Ориентиры расходов сопоставлены с обзорами цен за 2026 год: <a href="https://toureast.uz/en/blog/uzbekistan-travel-cost" target="_blank" rel="noopener noreferrer">TourEast</a> и <a href="https://oxusroad.com/en/travel-guide/trip-cost/" target="_blank" rel="noopener noreferrer">Oxus Road</a>. Программа построена вокруг существующих мест и предполагает самостоятельное посещение; фактические транспортные тарифы и входные билеты могут отличаться. Ссылки Google Карт открываются отдельно для каждого дня.</p>
+        <p class="rt-sources">Ориентиры расходов сопоставлены с обзорами цен за 2026 год: <a href="https://toureast.uz/en/blog/uzbekistan-travel-cost" target="_blank" rel="noopener noreferrer">TourEast</a> и <a href="https://oxusroad.com/en/travel-guide/trip-cost/" target="_blank" rel="noopener noreferrer">Oxus Road</a>. Для программы «Орнамент вкуса» использованы дополнительные ориентиры: <a href="https://www.history-museum.uz/site/about" target="_blank" rel="noopener noreferrer">музей</a>, <a href="https://stantours.uz/uzbekistan/tashkent/uzbek-bread-baking-masterclass" target="_blank" rel="noopener noreferrer">лепёшки</a> и <a href="https://craftnculture.uz/ru/workshops/tashkent-gijduvan-style-pottery-painting-workshop" target="_blank" rel="noopener noreferrer">керамика</a>. Моделируемые суммы округлены; занятие по сладостям и часть расходов не имеют подтверждённых тарифов. Программа построена вокруг существующих мест и предполагает самостоятельное посещение; фактические транспортные тарифы и входные билеты могут отличаться. Ссылки Google Карт открываются отдельно для каждого дня.</p>
       </div>
     </section>
 

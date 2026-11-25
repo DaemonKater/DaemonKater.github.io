@@ -7,7 +7,7 @@
  const $$=(s,root=document)=>[...root.querySelectorAll(s)];
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const sum=n=>new Intl.NumberFormat('ru-RU').format(Math.round(n));
- const money=n=>`${sum(n)} сум`;
+ const money=n=>n==null?'—':`${sum(n)} сум`;
  const picture={
    hazrat:'assets/places/hazrat.webp',kukeldash:'assets/places/kukeldash.webp',chorsu:'assets/places/chorsu.webp',
    city:'assets/places/city.webp',minor:'assets/places/minor.webp',tower:'assets/places/tower.webp',
@@ -22,7 +22,16 @@
    besh:{name:'Центр плова Besh Qozon',coords:[41.34747,69.28489]},temur:{name:'Сквер Амира Темура',coords:[41.31009,69.27953]},afsona:{name:'Ресторан Afsona',coords:[41.2998871,69.2773014]},
    applied:{name:'Музей прикладного искусства',coords:[41.301258,69.259195]},metro:{name:'Метро «Космонавтлар»',coords:[41.305022,69.265344]},theatre:{name:'Театр Алишера Навои',coords:[41.309163,69.271548]},
    independence:{name:'Площадь Независимости',coords:[41.31539,69.26744]},oloy:{name:'Алайский базар',coords:[41.31876,69.28507]},abul:{name:'Медресе Абулкасым',coords:[41.3067,69.2399]},
-   navoi:{name:'Национальный парк Навои',coords:[41.30148,69.24124]},caravan:{name:'Ресторан Caravan',coords:[41.28514,69.2576]}
+   navoi:{name:'Национальный парк Навои',coords:[41.30148,69.24124]},caravan:{name:'Ресторан Caravan',coords:[41.28514,69.2576]},
+   historymuseum:{name:'Музей истории Узбекистана',coords:null,query:'Государственный музей истории Узбекистана Ташкент'},
+   plovmuseum:{name:'Музей плова (площадка уточняется)',coords:null,query:'Музей плова Ташкент'},
+   flatbreadclass:{name:'Мастер-класс по лепёшкам (площадка уточняется)',coords:null,query:'мастер-класс узбекские лепёшки Ташкент'},
+   teahouse:{name:'Чайхана (заведение уточняется)',coords:null,query:'чайхана Ташкент'},
+   ceramics:{name:'Мастер-класс по гиждуванской керамике (площадка уточняется)',coords:null,query:'мастер-класс гиждуванская керамика Ташкент'},
+   bukharalunch:{name:'Обед бухарской кухни (заведение уточняется)',coords:null,query:'бухарская кухня ресторан Ташкент'},
+   sweetsclass:{name:'Дегустация сладостей и мастер-класс (площадка уточняется)',coords:null,query:'мастер-класс узбекские сладости нишолда Ташкент'},
+   tyndyray:{name:'Ресторан «Тындырай» (адрес уточняется)',coords:null,query:'ресторан Тындырай Ташкент'},
+   souvenirshopping:{name:'Покупка сувениров (магазин уточняется)',coords:null,query:'узбекские сувениры Ташкент'}
  };
  // Все часы — предлагаемый дневной план. Буферы учитывают свободное время, очереди и приблизительные переезды.
  const DAYS=[
@@ -68,7 +77,45 @@
     {at:'16:20',end:'18:30',place:'afsona',kind:'Прощальный ужин',title:'Дастархан впечатлений',do:'Выбери любимые блюда путешествия, обсуди впечатления и собери свой список рекомендаций.',taste:'Плов другого вида, манты, шашлык, салат ачичук и чай по вкусу.',tip:'Заведение и столик необходимо проверять и бронировать самостоятельно.',travel:'После ужина возврат к месту проживания или вокзалу/аэропорту — отдельный выбранный трансфер.'}
    ]}
  ];
- const TOURS={3:{title:'Три вкуса Ташкента',subtitle:'Самое важное без спешки',days:[0,1,2],desc:'Старый город, большой плов и культурные открытия — три разных лица столицы.'},4:{title:'Ташкент без спешки',subtitle:'Глубже в традиции и районы',days:[0,1,2,3],desc:'Добавь Алайский рынок, ремёсла и семейный обед в национальном стиле.'},5:{title:'Большое гастропутешествие',subtitle:'Пять дней, которые запоминаются',days:[0,1,2,3,4],desc:'Полная программа с дегустациями, архитектурой, рынками и свободными паузами.'}};
+// Вариант на четыре дня переносит программу «Орнамент вкуса» из
+ // предоставленного паспорта проекта, раздел 7.3. Он независим от 3- и 5-дневных программ.
+ // В паспорте указаны одновременно «5 дней / 4 ночи» и сценарий дней 1–4,
+ // а также есть строка про «6 день»; здесь берём только явно описанные дни 1–4.
+ // Неуточнённые площадки и цены не придумываем.
+ const FOUR_DAYS=[
+  {name:'Духовность и история Ташкента',subtitle:'Прибытие, исторические места и знакомство с пловом',cover:'hazrat',label:'ИСТОРИЯ И ДУХОВНОСТЬ',highlight:'Архитектура старого города, музейные экспонаты и приготовление плова.',food:145000,tickets:100000,localCar:150000,workshops:0,
+   events:[
+    {at:'До 14:00',end:'',place:null,kind:'Прибытие',title:'Прилёт и размещение',do:'Первая половина дня отведена на прибытие участников и заселение в гостиницу.',taste:'',tip:'Отель и трансфер в паспорте маршрута не уточнены.',travel:'Перед началом экскурсионной части предусмотрен приезд в Ташкент.'},
+    {at:'14:00',end:'15:00',place:'hazrat',kind:'Культура',title:'Комплекс Хазрати Имам',do:'Знакомство с духовной историей Ташкента и историческими памятниками комплекса.',taste:'Чай с лепёшкой в чайхане при наличии открытого заведения.',tip:'Соблюдать правила посещения религиозных объектов.',travel:'Следующая остановка указана уже на 15:00; время переезда нужно согласовать.'},
+    {at:'15:00',end:'15:15',place:'temur',kind:'История',title:'Памятник Амиру Темуру',do:'Разговор о культурном обмене в эпоху Тимуридов и его связи с кухней региона.',taste:'',tip:'По паспорту на осмотр отведено 15 минут; дорога между точками отдельно не заложена.',travel:'Переезд к музею. Время в исходной программе не указано.'},
+    {at:'15:30',end:'16:30',place:'historymuseum',kind:'Музей',title:'Музей истории Узбекистана',do:'Знакомство с наследием Бухарского, Хивинского и Кокандского ханств, торговыми путями, посудой и традициями питания.',taste:'',tip:'Уточнить режим работы и доступность экспозиции перед поездкой.',travel:'Затем предусмотрен вечерний визит в Beshqozon.'},
+    {at:'18:00',end:'',place:'besh',kind:'Ужин',title:'Beshqozon — ужин',do:'Наблюдение за приготовлением плова в больших казанах и знакомство с традиционной подачей.',taste:'Плов.',tip:'Уточнить, работает ли выбранное заведение и доступен ли плов к 18:00.',travel:'Возвращение к месту проживания — самостоятельно или с заказанным трансфером.'}
+   ]},
+  {name:'Кухня Ташкента',subtitle:'Кукельдаш, Чорсу, плов и лепёшки',cover:'kukeldash',label:'ГОРОДСКАЯ КУХНЯ',highlight:'Городские традиции гостеприимства, базар и мастер-класс по лепёшкам.',food:195000,tickets:0,localCar:135000,workshops:650000,
+   events:[
+    {at:'10:00',end:'12:00',place:'kukeldash',kind:'История',title:'Медресе Кукельдаш',do:'Осмотр медресе на площади Чорсу и знакомство с традициями общественной трапезы, чайхан и гостеприимства.',taste:'В рассказе о кухне упоминаются плов, шурпа и ханум.',tip:'Правила входа и возможность посещения внутренних помещений нужно уточнить.',travel:'Следующая точка — базар Чорсу.'},
+    {at:'12:00',end:'13:00',place:'chorsu',kind:'Базар',title:'Чорсу',do:'Посещение базара — отдельный пункт авторской программы.',taste:'',tip:'Конкретные дегустации в паспорте не перечислены.',travel:'Следующий пункт — «Музей плова»; точный адрес в документе отсутствует.'},
+    {at:'13:30',end:'16:30',place:'plovmuseum',kind:'Образовательная программа',title:'Музей плова',do:'Посещение «Музея плова» согласно паспорту маршрута; точная площадка и формат не указаны.',taste:'',tip:'Адрес, посещение и бронирование требуют подтверждения.',travel:'Переезд к месту мастер-класса по лепёшкам; адрес не указан.'},
+    {at:'16:30',end:'17:30',place:'flatbreadclass',kind:'Мастер-класс',title:'Мастер-класс по лепёшкам',do:'Практическое занятие по приготовлению лепёшек согласно проектной программе.',taste:'Лепёшки.',tip:'Организатор, место и стоимость участия в паспорте не указаны.',travel:'Вечером запланирован ужин в чайхане.'},
+    {at:'19:00',end:'',place:'teahouse',kind:'Ужин',title:'Ужин в чайхане',do:'Вечернее знакомство с традицией трапезы в чайхане.',taste:'',tip:'Конкретная чайхана, меню и необходимость бронирования не указаны.',travel:'Возвращение в отель по самостоятельному плану.'}
+   ]},
+  {name:'Бухарско-самаркандская кухня',subtitle:'Самса, гиждуванская керамика и восточные сладости',cover:'minor',label:'ВКУСЫ И РЕМЁСЛА',highlight:'Самса у мечети Минор, роспись керамики и нишолда.',food:250000,tickets:0,localCar:155000,workshops:750000,
+   events:[
+    {at:'10:00',end:'12:00',place:'minor',kind:'Гастрономия',title:'Minor Samsa у мечети Минор',do:'Посещение точки «Minor Samsa» рядом с мечетью Минор по программе паспорта.',taste:'Самса.',tip:'Точный адрес Minor Samsa и время работы нужно подтвердить; на карте отмечена мечеть Минор как ориентир.',travel:'Далее запланирован мастер-класс, его адрес не указан.'},
+    {at:'12:30',end:'14:00',place:'ceramics',kind:'Мастер-класс',title:'Роспись керамики — Гиждуван',do:'Практическое занятие по росписи керамики в гиждуванской технике.',taste:'',tip:'Мастер, адрес проведения и стоимость не указаны.',travel:'Затем обед бухарской кухни.'},
+    {at:'14:00',end:'15:00',place:'bukharalunch',kind:'Обед',title:'Обед бухарской кухни',do:'Обед, посвящённый бухарским гастрономическим традициям.',taste:'',tip:'Название ресторана и меню отсутствуют в исходном паспорте.',travel:'После обеда — сладости и практическое занятие.'},
+    {at:'15:30',end:'16:00',place:'sweetsclass',kind:'Дегустация',title:'Сладости, халва и нишолда',do:'Дегустация сладостей, лекция о халве и мастер-класс по нишолде (в исходном паспорте — «нишалдин»).',taste:'Халва и нишолда.',tip:'Точная площадка и возможность мастер-класса требуют подтверждения.',travel:'Следующим пунктом указан ресторан без времени.'},
+    {at:'Время не указано',end:'',place:'tyndyray',kind:'Ресторан',title:'Ресторан «Тындырай»',do:'Ресторан указан в паспорте как пункт третьего дня без времени посещения.',taste:'',tip:'Название, адрес и возможность посещения необходимо перепроверить.',travel:'После ресторана запланировано завершение дня.'}
+   ]},
+  {name:'Свободный день и отъезд',subtitle:'Современный Ташкент и покупки на память',cover:'city',label:'СВОБОДНЫЙ ДЕНЬ',highlight:'Tashkent City Park, сувениры и отправление домой.',food:90000,tickets:0,localCar:100000,workshops:0,
+   events:[
+    {at:'10:00',end:'12:00',place:'city',kind:'Прогулка',title:'Tashkent City Park',do:'Обзорная экскурсия по современным кварталам; сравнение парка с площадями первых дней.',taste:'',tip:'Проверить режим работы парка и проведение мероприятий.',travel:'После прогулки по программе предусмотрена покупка сувениров.'},
+    {at:'12:30',end:'',place:'souvenirshopping',kind:'Покупки',title:'Покупка сувениров',do:'Свободное время для покупки сувениров согласно программе.',taste:'',tip:'Торговая точка в паспорте не указана.',travel:'Далее — отъезд участников.'},
+    {at:'После покупок',end:'',place:null,kind:'Отъезд',title:'Отъезд участников',do:'Завершение четырёхдневной программы. Время и транспорт отправления в паспорте не конкретизированы.',taste:'',tip:'Уточнить рейс, вокзал и необходимость трансфера заранее.',travel:''}
+   ]}
+ ];
+ DAYS.push(...FOUR_DAYS);
+ const TOURS={3:{title:'Три вкуса Ташкента',subtitle:'Самое важное без спешки',days:[0,1,2],desc:'Старый город, большой плов и культурные открытия — три разных лица столицы.'},4:{title:'Орнамент вкуса',subtitle:'История, кухня и ремёсла Ташкента',days:[5,6,7,8],desc:'Культурно-гастрономическая программа из паспорта маршрута: четыре дня с экскурсиями, мастер-классами и отъездом. Примерные расходы рассчитаны по отдельной модели; площадки и цены требуют подтверждения.'},5:{title:'Большое гастропутешествие',subtitle:'Пять дней, которые запоминаются',days:[0,1,2,3,4],desc:'Полная программа с дегустациями, архитектурой, рынками и свободными паузами.'}};
  let st={days:3,group:2,arrival:'none',departure:'none',activeDay:0};
  // Транспортная оценка на легковое такси до 3 гостей (без специального багажа).
  const TRANSFERS={none:{label:'Не нужен',price:0},airport:{label:'Аэропорт Ташкента',price:120000},rail:{label:'Железнодорожный вокзал',price:90000}};
@@ -76,15 +123,20 @@
  const chosen=()=>TOURS[st.days];
  const activeDays=()=>chosen().days.map(i=>DAYS[i]);
  const estimate=()=>{
-  const list=activeDays(), perPerson=list.reduce((v,d)=>v+d.food+d.tickets,0);
-  const sharedTransport=list.reduce((v,d)=>v+d.localCar,0)*cars();
+  const list=activeDays();
+  const perPersonFood=list.reduce((v,d)=>v+(d.food||0),0);
+  const perPersonTickets=list.reduce((v,d)=>v+(d.tickets||0),0);
+  const perPersonWorkshops=list.reduce((v,d)=>v+(d.workshops||0),0);
+  // Taxi costs are group-wide; the model assumes up to 3 travelers per standard taxi.
+  const sharedTransport=list.reduce((v,d)=>v+(d.localCar||0),0)*cars();
   const transfers=(TRANSFERS[st.arrival].price+TRANSFERS[st.departure].price)*cars();
-  const total=perPerson*st.group+sharedTransport+transfers;
-  return {perPerson,sharedTransport,transfers,total,each:total/st.group,food:list.reduce((v,d)=>v+d.food,0)*st.group,tickets:list.reduce((v,d)=>v+d.tickets,0)*st.group};
+  const total=(perPersonFood+perPersonTickets+perPersonWorkshops)*st.group+sharedTransport+transfers;
+  return {perPerson:perPersonFood+perPersonTickets+perPersonWorkshops,sharedTransport,transfers,total,each:total/st.group,
+    food:perPersonFood*st.group,tickets:perPersonTickets*st.group,workshops:perPersonWorkshops*st.group};
  };
  const uniqueIds=day=>[...new Set(day.events.map(e=>e.place).filter(id=>places[id]))];
  const linkFor=day=>{
-  const ids=uniqueIds(day),coords=ids.map(id=>places[id].coords.join(','));
+  const ids=uniqueIds(day),coords=ids.filter(id=>Array.isArray(places[id].coords)).map(id=>places[id].coords.join(','));
   if(coords.length<2)return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords[0]||'Tashkent')}`;
   const p=new URLSearchParams({api:'1',origin:coords[0],destination:coords.at(-1),travelmode:'driving'});
   if(coords.length>2)p.set('waypoints',coords.slice(1,-1).join('|'));
@@ -99,15 +151,22 @@
   setText('#rt-total',money(budget.total));setText('#rt-perperson',money(budget.each));
   setText('#rt-food-cost',money(budget.food));setText('#rt-tickets-cost',money(budget.tickets));
   setText('#rt-local-cost',money(budget.sharedTransport));setText('#rt-transfer-cost',money(budget.transfers));
+  setText('#rt-workshops-cost',money(budget.workshops));
+  const workshopRow=$('#rt-workshops-row');if(workshopRow)workshopRow.hidden=st.days!==4;
   setText('#rt-price-breakdown',`Расчёт для ${st.group} чел. · ${cars()} машин(ы) по 3 пассажира · ${st.days} дня(дней).`);
-  setText('#rt-included-description',`В расчёте: еда и дегустации, примерные входные билеты, городской транспорт и ${st.arrival==='none'&&st.departure==='none'?'без трансфера к месту прибытия/отправления':'выбранные трансферы'}.`);
+  setText('#rt-included-description',st.days===4
+   ?'«Орнамент вкуса»: ориентировочная смета, включая три мастер-класса. По паспорту цены не заданы: взяты открытые ценовые ориентиры и плановые резервы. Оплата и бронирование не выполнены.'
+   :`В расчёте: еда и дегустации, примерные входные билеты, городской транспорт и ${st.arrival==='none'&&st.departure==='none'?'без трансфера к месту прибытия/отправления':'выбранные трансферы'}.`);
   $('#rt-day-nav').innerHTML=days.map((d,i)=>`<button type="button" class="rt-day-tab ${i===st.activeDay?'is-active':''}" data-rt-day="${i}" aria-pressed="${i===st.activeDay}"><span>ДЕНЬ ${String(i+1).padStart(2,'0')}</span><strong>${esc(d.name)}</strong><small>${d.events[0].at}–${d.events.at(-1).end}</small></button>`).join('');
   const day=days[st.activeDay];
   $('#rt-day-cover').src=picture[day.cover];$('#rt-day-cover').alt=`Художественная иллюстрация: ${day.name}`;
   setText('#rt-day-kicker',`ДЕНЬ ${st.activeDay+1} / ${st.days} · ${day.label}`);
   setText('#rt-day-title',day.name);setText('#rt-day-subtitle',day.subtitle);
   setText('#rt-day-highlight',day.highlight);
-  $('#rt-timeline').innerHTML=day.events.map((e,i)=>`<article class="rt-event"><div class="rt-event-time"><strong>${e.at}</strong><small>${e.end}</small><span class="rt-event-dot" aria-hidden="true"></span></div><div class="rt-event-body"><div class="rt-event-top"><span>${esc(e.kind)}</span><strong>${esc(e.title)}</strong></div><p>${esc(e.do)}</p><div class="rt-event-notes"><span><b>Что попробовать</b>${esc(e.taste)}</span><span><b>Полезно знать</b>${esc(e.tip)}</span></div><div class="rt-event-travel">↗ ${esc(e.travel)}</div></div></article>`).join('');
+  $('#rt-timeline').innerHTML=day.events.map((e,i)=>{
+   const p=places[e.place],hasExactPoint=!!(p&&p.coords),searchUrl=p?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hasExactPoint?p.coords.join(','):(p.query||p.name))}`:null;
+   return `<article class="rt-event"><div class="rt-event-time"><strong>${esc(e.at)}</strong><small>${esc(e.end||'')}</small><span class="rt-event-dot" aria-hidden="true"></span></div><div class="rt-event-body"><div class="rt-event-top"><span>${esc(e.kind)}</span><strong>${esc(e.title)}</strong></div><p>${esc(e.do)}</p><div class="rt-event-notes">${e.taste?`<span><b>Что попробовать</b>${esc(e.taste)}</span>`:''}${e.tip?`<span><b>Полезно знать</b>${esc(e.tip)}</span>`:''}</div>${e.travel?`<div class="rt-event-travel">↗ ${esc(e.travel)}</div>`:''}${st.days===4&&searchUrl?`<a class="rt-stop-search" href="${searchUrl}" target="_blank" rel="noopener noreferrer">${hasExactPoint?'Открыть точку на карте ↗':'Найти площадку в Google Картах ↗'}</a>`:''}</div></article>`;
+  }).join('')+(st.days===4?'<p class="rt-source-note">Маршрут перенесён из паспорта «Орнамент вкуса». Время, мастер-классы и площадки без адресов требуют подтверждения. Общая ссылка на карту включает только точки с известными координатами.</p>':'');
   const link=$('#rt-google-day');link.href=linkFor(day);link.setAttribute('aria-label',`Открыть маршрут дня ${st.activeDay+1} в Google Картах`);
   $$('#rt-day-nav [data-rt-day]').forEach(b=>b.addEventListener('click',()=>{st.activeDay=Number(b.dataset.rtDay);render();}));
  }
@@ -168,13 +227,13 @@
    const y=top+i*rowH;drawRoundRect(c,130,y,799,rowH-9,14);c.fillStyle=i%2?'#f5ebd8':'#eff1e7';c.fill();
    c.beginPath();c.arc(115,y+31,18,0,Math.PI*2);c.fillStyle=i%2?PAL.coral:PAL.teal;c.fill();
    c.fillStyle='#fff';c.font='700 15px Manrope,Arial,sans-serif';c.textAlign='center';c.fillText(String(i+1),115,y+37);c.textAlign='left';
-   c.fillStyle=PAL.coral;c.font='800 19px Manrope,Arial,sans-serif';c.fillText(`${e.at}—${e.end}`,152,y+25);
-   c.fillStyle=PAL.dark;c.font='700 22px Manrope,Arial,sans-serif';c.fillText(e.title,371,y+25);
+   c.fillStyle=PAL.coral;c.font='800 19px Manrope,Arial,sans-serif';c.fillText(e.end?`${e.at}—${e.end}`:e.at,152,y+25,210);
+   c.fillStyle=PAL.dark;c.font='700 22px Manrope,Arial,sans-serif';c.fillText(e.title,371,y+25,535);
    c.fillStyle='#4d6259';c.font='500 17px Manrope,Arial,sans-serif';wrap(c,e.do,152,y+55,735,22,2);
    // Дегустации и рекомендации представлены отдельно на следующей странице.
   });
   drawRoundRect(c,76,1257,848,73,12);c.fillStyle=PAL.teal;c.fill();c.fillStyle='#fff8ea';c.font='800 23px Manrope,Arial,sans-serif';c.textAlign='center';c.fillText(`ОТКРЫТЬ ДЕНЬ ${index+1} В GOOGLE КАРТАХ   ↗`,500,1303);c.textAlign='left';
-  c.fillStyle=PAL.muted;c.font='500 15px Manrope,Arial,sans-serif';c.fillText('Время и переезды примерные. Еда, советы и логистика — на следующей странице.',77,1244);
+  c.fillStyle=PAL.muted;c.font='500 15px Manrope,Arial,sans-serif';c.fillText(st.days===4?'На карте — только точки с известными координатами. Остальные адреса уточняй.':'Время и переезды примерные. Еда, советы и логистика — на следующей странице.',77,1244);
   return {canvas:cv,links:[{url:linkFor(day),rect:[76,1257,848,73]}]};
  }
  async function makeDayDetails(day,number,index){
@@ -187,10 +246,10 @@
      const y=start+i*rowHeight;
      drawRoundRect(c,67,y,865,109,12);c.fillStyle=i%2===0?'#f0ede0':'#f8ebd9';c.fill();
      c.fillStyle=PAL.coral;c.font='800 15px Manrope,Arial,sans-serif';c.fillText(e.at,84,y+29);
-     c.fillStyle=PAL.dark;c.font='800 20px Manrope,Arial,sans-serif';c.fillText(e.title,172,y+29);
+     c.fillStyle=PAL.dark;c.font='800 20px Manrope,Arial,sans-serif';c.fillText(e.title,172,y+29,745);
      c.fillStyle=PAL.teal;c.font='700 13px Manrope,Arial,sans-serif';c.fillText('ПОПРОБОВАТЬ',87,y+52);c.fillText('ПОЛЕЗНО ЗНАТЬ',491,y+52);
      c.fillStyle=PAL.ink;c.font='500 15px Manrope,Arial,sans-serif';
-     wrap(c,e.taste,87,y+72,374,19,2);wrap(c,e.tip,492,y+72,413,19,2);
+     wrap(c,e.taste||'—',87,y+72,374,19,2);wrap(c,e.tip||'—',492,y+72,413,19,2);
    });
    drawRoundRect(c,76,1258,850,68,11);c.fillStyle=PAL.teal;c.fill();c.fillStyle='#fff8ea';c.font='800 23px Manrope,Arial,sans-serif';c.textAlign='center';c.fillText(`НАВИГАЦИЯ ПО ДНЮ ${index+1} В GOOGLE КАРТАХ  ↗`,500,1301);c.textAlign='left';
    return {canvas:cv,links:[{url:linkFor(day),rect:[76,1258,850,68]}]};
@@ -198,18 +257,21 @@
  async function makeBudget(number){
   const [cv,c]=page();base(c,number,'расходы и трансферы');const b=estimate();
   c.fillStyle=PAL.dark;c.font='700 54px Georgia,serif';c.fillText('Бюджет путешествия',63,213);
-  c.fillStyle=PAL.muted;c.font='500 22px Manrope,Arial,sans-serif';wrap(c,'Предварительная смета для самостоятельной поездки — не ценовое предложение туроператора.',67,262,850,33,2);
+  c.fillStyle=PAL.muted;c.font='500 22px Manrope,Arial,sans-serif';wrap(c,st.days===4?'Ориентировочная смета: расходы и три мастер-класса рассчитаны по ценовым ориентирам и резервам, а не взяты из паспорта.':'Предварительная смета для самостоятельной поездки — не ценовое предложение туроператора.',67,262,850,33,2);
   drawRoundRect(c,65,329,865,190,19);c.fillStyle=PAL.dark;c.fill();
   c.fillStyle='#e7ca8f';c.font='700 19px Manrope,Arial,sans-serif';c.fillText('ИТОГО НА ГРУППУ',94,382);c.fillText('В СРЕДНЕМ НА ЧЕЛОВЕКА',523,382);
   c.fillStyle='#fff7e5';c.font='700 45px Manrope,Arial,sans-serif';c.fillText(money(b.total),95,457);c.font='700 35px Manrope,Arial,sans-serif';c.fillText(money(b.each),524,457);
-  const rows=[['Питание, напитки, дегустации',b.food],['Входные билеты (оценка)',b.tickets],['Местные поездки по городу',b.sharedTransport],['Встреча и обратный трансфер',b.transfers]];
-  rows.forEach(([label,v],i)=>{const y=606+i*105;c.fillStyle=i%2?'#eaf0e5':'#f3e9d7';drawRoundRect(c,67,y,863,87,12);c.fill();c.fillStyle=PAL.dark;c.font='600 22px Manrope,Arial,sans-serif';c.fillText(label,91,y+55);c.textAlign='right';c.font='700 23px Manrope,Arial,sans-serif';c.fillText(money(v),904,y+55);c.textAlign='left'});
+  const rows=[['Питание, напитки, дегустации',b.food],['Входные билеты (оценка)',b.tickets]];
+  if(st.days===4)rows.push(['Три мастер-класса (оценка)',b.workshops]);
+  rows.push(['Местные поездки по городу',b.sharedTransport],['Встреча и обратный трансфер',b.transfers]);
+  const step=st.days===4?90:105,boxH=st.days===4?75:87,firstY=st.days===4?577:606;
+  rows.forEach(([label,v],i)=>{const y=firstY+i*step;c.fillStyle=i%2?'#eaf0e5':'#f3e9d7';drawRoundRect(c,67,y,863,boxH,12);c.fill();c.fillStyle=PAL.dark;c.font='600 21px Manrope,Arial,sans-serif';c.fillText(label,91,y+boxH*.65,617);c.textAlign='right';c.font='700 22px Manrope,Arial,sans-serif';c.fillText(money(v),904,y+boxH*.65);c.textAlign='left'});
   c.fillStyle=PAL.dark;c.font='700 28px Georgia,serif';c.fillText('Трансфер: что учтено',70,1095);
   c.fillStyle=PAL.muted;c.font='500 19px Manrope,Arial,sans-serif';
   const arr=`Встреча: ${TRANSFERS[st.arrival].label}. Обратный путь: ${TRANSFERS[st.departure].label}. На группу ${st.group} чел. заложено ${cars()} такси, до 3 пассажиров в каждом.`;
   wrap(c,arr,71,1137,851,29,3);
   c.fillStyle=PAL.coral;c.font='700 19px Manrope,Arial,sans-serif';c.fillText('Не включено:',70,1241);
-  c.fillStyle=PAL.muted;c.font='500 16px Manrope,Arial,sans-serif';wrap(c,'Отель, авиабилеты, поезд, услуги гида, бронирования и дополнительные покупки. Трансфер учтён в смете, но не заказан. Проверяй цены и доступность перед поездкой.',70,1275,846,24,3);
+  c.fillStyle=PAL.muted;c.font='500 16px Manrope,Arial,sans-serif';wrap(c,st.days===4?'Отель, билеты до Ташкента, гид, сувениры и незаявленные расходы. Мастер-классы и питание учтены как плановый резерв, реальные цены уточняются до бронирования.':'Отель, авиабилеты, поезд, услуги гида, бронирования и дополнительные покупки. Трансфер учтён в смете, но не заказан. Проверяй цены и доступность перед поездкой.',70,1275,846,24,3);
   const links=activeDays().map((d,i)=>({url:linkFor(d),rect:[68,1340-2,0,0]})); // ссылки уже встроены в страницы дней
   return {canvas:cv,links};
  }
@@ -258,6 +320,7 @@
     window.TasteExplorer.setTourStops(uniqueIds(day));
   });
   window.TasteExplorer.chooseDay(0);
+  if(st.days===4)console.info('Площадки мастер-классов и рестораны без подтверждённых координат не перенесены на карту. Их программа сохранена в готовом маршруте и PDF.');
   $('#planner')?.scrollIntoView({behavior:'smooth',block:'start'});
  }
  function init(){

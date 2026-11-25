@@ -76,3 +76,37 @@
   :root[data-site-lang="uz"] .hero h1,
   :root[data-site-lang="en"] .hero h1{font-size:43px}
 }
+
+/* V13: guaranteed script-aware display selection. Blackletter source is Latin-only,
+   so never silently render Russian headings in an arbitrary browser fallback. */
+:root{--display-latin:'Grenze Gotisch','Yeseva One',Georgia,serif;
+      --display-cyrillic:'Yeseva One','Playfair Display',Georgia,serif}
+:root[data-site-lang="ru"] .hero h1,
+:root[data-site-lang="ru"] .section-heading,
+:root[data-site-lang="ru"] .rt-header h2,
+:root[data-site-lang="ru"] .rt-overview h3,
+:root[data-site-lang="ru"] .rt-day-top h4,
+:root[data-site-lang="ru"] .v7-immersive-text h2{
+  font-family:var(--display-cyrillic)!important;
+}
+:root[data-site-lang="en"] .hero h1,
+:root[data-site-lang="en"] .section-heading,
+:root[data-site-lang="en"] .rt-header h2,
+:root[data-site-lang="en"] .rt-overview h3,
+:root[data-site-lang="en"] .rt-day-top h4,
+:root[data-site-lang="en"] .v7-immersive-text h2,
+:root[data-site-lang="uz"] .hero h1,
+:root[data-site-lang="uz"] .section-heading,
+:root[data-site-lang="uz"] .rt-header h2,
+:root[data-site-lang="uz"] .rt-overview h3,
+:root[data-site-lang="uz"] .rt-day-top h4,
+:root[data-site-lang="uz"] .v7-immersive-text h2{
+  font-family:var(--display-latin)!important;
+}
+.rt-stop-search{display:inline-block;margin-top:10px;padding:6px 11px;background:#e9f0e7;
+  color:#08645a;border:1px solid #c6d8c9;border-radius:6px;font-size:11px;font-weight:800}
+.rt-stop-search:hover{background:#d4e8d8}
+.rt-source-note{margin:18px 24px 8px;padding:14px 18px;background:#fff0d6;
+  border-left:3px solid #cd8853;color:#6d5039;line-height:1.7;font-size:12px}
+.rt-event-notes:empty{display:none}
+@media(max-width:650px){.rt-source-note{margin:16px 14px}}
